@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSJM University, Kanpur | Modern & Futuristic</title>
+    <meta name="description" content="Welcome to the future of education at Chhatrapati Shahu Ji Maharaj University, Kanpur. Explore our A++ NAAC-rated programs in a cutting-edge digital campus.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0a0a1a;
+            color: #e0e0e0;
+        }
+        .hero-section {
+            background: linear-gradient(rgba(10, 10, 30, 0.7), rgba(10, 10, 30, 0.9)), url('https://placehold.co/1920x1080/0a0a1a/e0e0e0?text=Abstract+Campus') no-repeat center center;
+            background-size: cover;
+        }
+        .glass-nav {
+            background: rgba(15, 15, 35, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .neon-btn {
+            position: relative;
+            display: inline-block;
+            padding: 12px 28px;
+            color: #03e9f4;
+            text-decoration: none;
+            text-transform: uppercase;
+            overflow: hidden;
+            transition: .5s;
+            letter-spacing: 2px;
+            border: 1px solid #03e9f4;
+            border-radius: 8px;
+            box-shadow: 0 0 5px #03e9f4, 0 0 10px #03e9f4;
+        }
+        .neon-btn:hover {
+            background: #03e9f4;
+            color: #0a0a1a;
+            box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4;
+        }
+        .card {
+            background: rgba(20, 20, 45, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .neon-text-glow {
+            text-shadow: 0 0 8px rgba(3, 233, 244, 0.7);
+        }
+        .nav-link-hover {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-link-hover:hover {
+            color: #03e9f4;
+            text-shadow: 0 0 5px #03e9f4;
+        }
+        .nav-link-hover::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #03e9f4;
+            transition: width 0.3s;
+        }
+        .nav-link-hover:hover::after {
+            width: 100%;
+        }
+
+        /* --- Flip Card Styles --- */
+        .flip-card {
+            background-color: transparent;
+            perspective: 1000px; /* Gives the 3D effect */
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden; /* Safari */
+            backface-visibility: hidden;
+            border-radius: 0.5rem; /* 8px */
+        }
+        .flip-card-back {
+            background: linear-gradient(45deg, #03e9f4, #f403e9);
+            color: #0a0a1a;
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <!-- Header -->
+    <header class="glass-nav sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <!-- Main Navigation -->
+            <div class="flex justify-between items-center py-4">
+                <a href="https://csjmu.ac.in/" class="flex items-center space-x-3">
+                    <img src="https://csjmu.ac.in/wp-content/uploads/2021/12/cropped-csjm-university-logo-big-192x192.png" alt="CSJMU Logo" class="h-14 transition-transform duration-300 hover:rotate-12">
+                    <div>
+                        <h1 class="text-lg font-bold text-white neon-text-glow">CSJM University</h1>
+                        <p class="text-xs text-gray-400">Kanpur, Uttar Pradesh</p>
+                    </div>
+                </a>
+                <nav class="hidden md:flex space-x-8 items-center">
+                    <a href="https://csjmu.ac.in/" class="nav-link-hover font-medium">Home</a>
+                    <a href="https://csjmu.ac.in/university/about-university/" class="nav-link-hover font-medium">About</a>
+                    <a href="#" class="nav-link-hover font-medium">Academics</a>
+                    <a href="https://csjmu.ac.in/admissions202526/" class="nav-link-hover font-medium">Admissions</a>
+                    <a href="https://csjmu.ac.in/csjmu-research/" class="nav-link-hover font-medium">Research</a>
+                    <a href="#" class="neon-btn">Contact</a>
+                </nav>
+                <button class="md:hidden text-cyan-400">
+                    <i class="fas fa-bars fa-2x"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-white py-24 md:py-32">
+        <div class="container mx-auto text-center px-4">
+            <h2 class="text-4xl md:text-6xl font-bold mb-4 neon-text-glow animate-pulse">Shape Tomorrow's World</h2>
+            <p class="text-lg md:text-xl mb-10 max-w-3xl mx-auto text-gray-300">Join an A++ NAAC accredited institution where innovation meets excellence. Your journey to the future starts here.</p>
+            <a href="https://csjmu.ac.in/admissions202526/" class="neon-btn text-lg">Explore Programs</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-16">
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Left Column: Useful Links & News -->
+            <div class="md:col-span-1 space-y-8">
+                <!-- Useful Links -->
+                <div class="card p-6 rounded-lg hover:shadow-cyan-500/20 hover:shadow-lg transition-shadow">
+                    <h3 class="text-xl font-bold mb-4 border-b border-cyan-500/30 pb-2 text-cyan-400">Quick Access</h3>
+                    <ul class="space-y-3">
+                        <li><a href="https://csjmu.ac.in/admissions202526/" class="flex items-center text-gray-300 hover:text-cyan-400 transition"><i class="fas fa-bullhorn mr-3 text-cyan-400"></i>Admissions 2025-26</a></li>
+                        <li><a href="https://csjmu.ac.in/decode/" class="flex items-center text-gray-300 hover:text-cyan-400 transition"><i class="fas fa-graduation-cap mr-3 text-cyan-400"></i>Distance Education</a></li>
+                        <li><a href="https://innovation.csjmu.ac.in/" class="flex items-center text-gray-300 hover:text-cyan-400 transition"><i class="fas fa-lightbulb mr-3 text-cyan-400"></i>Innovation Hub</a></li>
+                        <li><a href="https://csjmu.ac.in/results/results/" class="flex items-center text-gray-300 hover:text-cyan-400 transition"><i class="fas fa-file-alt mr-3 text-cyan-400"></i>Results Portal</a></li>
+                    </ul>
+                </div>
+                <!-- Notices -->
+                <div class="card p-6 rounded-lg hover:shadow-cyan-500/20 hover:shadow-lg transition-shadow">
+                    <h3 class="text-xl font-bold mb-4 border-b border-cyan-500/30 pb-2 text-cyan-400">Notices & Circulars</h3>
+                    <div class="space-y-4 max-h-96 overflow-y-auto">
+                        <div class="border-l-4 border-cyan-500 pl-4">
+                            <p class="font-semibold">PhD Entrance Exam 2025-26 Results</p>
+                            <p class="text-sm text-gray-400">July 29, 2025</p>
+                        </div>
+                        <div class="border-l-4 border-green-400 pl-4">
+                            <p class="font-semibold">Revised BAMS/BUMS Exam Scheme</p>
+                            <p class="text-sm text-gray-400">July 29, 2025</p>
+                        </div>
+                        <div class="border-l-4 border-pink-500 pl-4">
+                            <p class="font-semibold">PhD Interview Schedule Released</p>
+                            <p class="text-sm text-gray-400">July 28, 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: About, Events, Authorities -->
+            <div class="md:col-span-2 space-y-12">
+                <!-- About Section -->
+                <div class="flip-card h-64">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front card p-6 rounded-lg flex flex-col justify-center">
+                            <h3 class="text-2xl font-bold mb-4 text-cyan-400 neon-text-glow">About CSJM University</h3>
+                            <p class="text-gray-300 leading-relaxed">Chhatrapati Shahu Ji Maharaj University stands as a hallmark of higher education, fostering an inclusive community where students from diverse backgrounds collaborate...</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3 class="font-bold text-2xl mb-2">Our Legacy</h3>
+                            <p class="mb-4">Dedicated to scholastic benefit and empowering students for the future.</p>
+                            <a href="https://csjmu.ac.in/university/about-university/" class="bg-black/70 text-white font-bold py-2 px-6 rounded-lg hover:bg-black transition">Discover More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- University Events -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-cyan-400 neon-text-glow">Featured Events</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="flip-card h-80">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front card overflow-hidden">
+                                    <img src="https://placehold.co/600x400/1a1a3a/03e9f4?text=AI+Workshop" alt="Event" class="w-full h-48 object-cover">
+                                    <div class="p-4">
+                                        <h4 class="font-bold text-lg mb-2 text-white">Pedagogy 5.0 Workshop</h4>
+                                        <p class="text-sm text-gray-400">Advancing Teaching & Research with AI and Technology.</p>
+                                    </div>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h4 class="font-bold text-xl mb-2">Pedagogy 5.0</h4>
+                                    <p class="mb-4">Join the workshop to explore the future of education.</p>
+                                    <a href="#" class="bg-black/70 text-white font-bold py-2 px-6 rounded-lg hover:bg-black transition">Register Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card h-80">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front card overflow-hidden">
+                                    <img src="https://placehold.co/600x400/1a1a3a/f403e9?text=Yoga+Day" alt="Event" class="w-full h-48 object-cover">
+                                    <div class="p-4">
+                                        <h4 class="font-bold text-lg mb-2 text-white">International Yoga Day 2025</h4>
+                                        <p class="text-sm text-gray-400">A day of wellness and tranquility.</p>
+                                    </div>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h4 class="font-bold text-xl mb-2">Yoga Day 2025</h4>
+                                    <p class="mb-4">Celebrate with us and find your inner peace.</p>
+                                    <a href="#" class="bg-black/70 text-white font-bold py-2 px-6 rounded-lg hover:bg-black transition">View Gallery</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Authorities -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-cyan-400 neon-text-glow">Our Leadership</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+                        <div class="flip-card h-64">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front card p-4 flex flex-col justify-center items-center">
+                                    <img src="https://csjmu.ac.in/wp-content/uploads/2021/11/governer.jpeg" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-cyan-400">
+                                    <h4 class="font-bold text-white">Smt. Anandiben Patel</h4>
+                                    <p class="text-sm text-gray-400">Hon'ble Chancellor</p>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h4 class="font-bold text-lg">Smt. Anandiben Patel</h4>
+                                    <p class="mb-4 text-sm">Guiding our university towards a brighter future.</p>
+                                    <a href="http://upgovernor.gov.in/" class="bg-black/70 text-white font-bold py-2 px-4 rounded-lg hover:bg-black transition text-sm">View Bio</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card h-64">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front card p-4 flex flex-col justify-center items-center">
+                                    <img src="https://csjmu.ac.in/wp-content/uploads/2021/11/chief-minister.jpeg" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-cyan-400">
+                                    <h4 class="font-bold text-white">Shri Yogi Adityanath</h4>
+                                    <p class="text-sm text-gray-400">Hon'ble Chief Minister</p>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h4 class="font-bold text-lg">Shri Yogi Adityanath</h4>
+                                    <p class="mb-4 text-sm">Supporting educational excellence across the state.</p>
+                                    <a href="http://upcmo.up.nic.in/" class="bg-black/70 text-white font-bold py-2 px-4 rounded-lg hover:bg-black transition text-sm">View Bio</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card h-64">
+                             <div class="flip-card-inner">
+                                <div class="flip-card-front card p-4 flex flex-col justify-center items-center">
+                                    <img src="https://csjmu.ac.in/wp-content/uploads/2022/08/vc-sir-csjmu.jpg" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-cyan-400">
+                                    <h4 class="font-bold text-white">Prof. Vinay Kumar Pathak</h4>
+                                    <p class="text-sm text-gray-400">Vice Chancellor</p>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h4 class="font-bold text-lg">Prof. Vinay Kumar Pathak</h4>
+                                    <p class="mb-4 text-sm">Leading our institution with vision and dedication.</p>
+                                    <a href="https://csjmu.ac.in/frontpage/vice-chancellors-profile/" class="bg-black/70 text-white font-bold py-2 px-4 rounded-lg hover:bg-black transition text-sm">View Bio</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900/50 mt-16 border-t border-cyan-500/20">
+        <div class="container mx-auto px-4 py-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="font-bold text-lg mb-4 text-cyan-400">CSJM University</h4>
+                    <p class="text-sm text-gray-400">Kalyanpur, Kanpur-208024</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="https://facebook.com/csjmuofficial" target="_blank" class="text-gray-400 hover:text-cyan-400 transition"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="https://twitter.com/csjmuofficial" target="_blank" class="text-gray-400 hover:text-cyan-400 transition"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="https://www.instagram.com/csjmuofficial" target="_blank" class="text-gray-400 hover:text-cyan-400 transition"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="https://www.youtube.com/@csjmuofficial" target="_blank" class="text-gray-400 hover:text-cyan-400 transition"><i class="fab fa-youtube fa-lg"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4 text-cyan-400">Policies</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="http://csjmu.ac.in/frontpage/privacy-policy/" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                        <li><a href="http://csjmu.ac.in/frontpage/disclaimer/" class="text-gray-400 hover:text-white">Disclaimer</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4 text-cyan-400">Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="http://upgovernor.gov.in/en" target="_blank" class="text-gray-400 hover:text-white">Raj Bhavan, UP</a></li>
+                        <li><a href="http://uphed.gov.in/" target="_blank" class="text-gray-400 hover:text-white">Higher Education, UP</a></li>
+                    </ul>
+                </div>
+                 <div>
+                    <h4 class="font-bold text-lg mb-4 text-cyan-400">Newsletter</h4>
+                    <p class="text-sm text-gray-400 mb-4">Stay updated with our latest news.</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Your Email" class="w-full rounded-l-md px-4 py-2 bg-gray-800 text-white border border-gray-700 focus:outline-none focus:border-cyan-400">
+                        <button class="bg-cyan-500 text-black px-4 rounded-r-md hover:bg-cyan-400 font-bold transition">Go</button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700/50 mt-8 pt-6 text-center text-sm text-gray-500">
+                <p>&copy; 2025 Chhatrapati Shahu Ji Maharaj University, Kanpur. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
