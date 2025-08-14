@@ -3,18 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSJM University, Kanpur | Modern & Futuristic</title>
-    <meta name="description" content="Welcome to the future of education at Chhatrapati Shahu Ji Maharaj University, Kanpur. Explore our A++ NAAC-rated programs in a cutting-edge digital campus.">
+    <title>CSJM University, Kanpur</title>
+    <meta name="description" content="Welcome to Chhatrapati Shahu Ji Maharaj University, Kanpur. Explore our programs and access the student & faculty portal.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* General Body Style from Main Page */
         body {
-            font-family: 'Poppins', sans-serif;
             background-color: #0a0a1a;
             color: #e0e0e0;
+        }
+
+        /* --- Styles for Home Page --- */
+        #home-page {
+            font-family: 'Poppins', sans-serif;
         }
         .hero-section {
             background: linear-gradient(rgba(10, 10, 30, 0.7), rgba(10, 10, 30, 0.9)), url('https://placehold.co/1920x1080/0a0a1a/e0e0e0?text=Abstract+Campus') no-repeat center center;
@@ -45,7 +51,7 @@
             color: #0a0a1a;
             box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4;
         }
-        .card {
+        #home-page .card {
             background: rgba(20, 20, 45, 0.7);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -74,11 +80,9 @@
         .nav-link-hover:hover::after {
             width: 100%;
         }
-
-        /* --- Flip Card Styles --- */
         .flip-card {
             background-color: transparent;
-            perspective: 1000px; /* Gives the 3D effect */
+            perspective: 1000px;
         }
         .flip-card-inner {
             position: relative;
@@ -94,9 +98,9 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            -webkit-backface-visibility: hidden; /* Safari */
+            -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
-            border-radius: 0.5rem; /* 8px */
+            border-radius: 0.5rem;
         }
         .flip-card-back {
             background: linear-gradient(45deg, #03e9f4, #f403e9);
@@ -108,231 +112,834 @@
             align-items: center;
             padding: 1rem;
         }
+
+        /* --- Styles for Portal Page --- */
+        #portal-section {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            color: #1f2937; /* Default dark gray text for portal */
+        }
+        #main-content {
+             background-color: #f0f4f8;
+        }
+        .csjmu-blue { background-color: #003366; }
+        .csjmu-blue-text { color: #003366; }
+        .sidebar-link {
+            transition: all 0.2s ease-in-out;
+        }
+        .sidebar-link:hover, .sidebar-link.active {
+            background-color: #004488;
+            color: white;
+            transform: translateX(5px);
+        }
+        #portal-section .card {
+            background-color: white;
+            color: #1f2937;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: all 0.3s ease;
+        }
+        #portal-section .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.1);
+        }
+        .btn-primary {
+            background-color: #003366;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #004488;
+        }
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 40;
+        }
+        .modal-content {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 50;
+        }
+        .tab-btn.active {
+            border-bottom-color: #003366;
+            color: #003366;
+            font-weight: 600;
+        }
+        /* Timetable specific styles */
+        #schedule-page-container {
+            background-color: #0f172a; /* Dark blue slate background */
+            color: #e2e8f0; /* Light gray text */
+        }
+        .glass-effect {
+            background: rgba(30, 41, 59, 0.5); /* Semi-transparent darker slate */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        .day-selector-btn {
+            transition: all 0.2s ease-in-out;
+        }
+        .day-selector-btn.active {
+            background-color: #4f46e5; /* Indigo */
+            color: white;
+            font-weight: 600;
+        }
+        .modal-overlay {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 100;
+        }
     </style>
 </head>
-<body class="bg-gray-900 text-gray-200">
+<body>
+    <canvas id="confetti-canvas" class="hidden"></canvas>
 
-    <!-- Header -->
-    <header class="glass-nav sticky top-0 z-50">
-        <div class="container mx-auto px-4">
-            <!-- Main Navigation -->
-            <div class="flex justify-between items-center py-4">
-                <a href="https://csjmu.ac.in/" class="flex items-center space-x-3">
-                    <img src="https://csjmu.ac.in/wp-content/uploads/2021/12/cropped-csjm-university-logo-big-192x192.png" alt="CSJMU Logo" class="h-14 transition-transform duration-300 hover:rotate-12">
+    <!-- =================================================================== -->
+    <!-- HOME PAGE SECTION (Initially Visible) -->
+    <!-- =================================================================== -->
+    <div id="home-page">
+        <!-- Header -->
+        <header class="glass-nav sticky top-0 z-50">
+            <div class="container mx-auto px-4">
+                <div class="flex justify-between items-center py-4">
+                    <a href="#" class="flex items-center space-x-3">
+                        <img src="https://csjmu.ac.in/wp-content/uploads/2021/12/cropped-csjm-university-logo-big-192x192.png" alt="CSJMU Logo" class="h-14 transition-transform duration-300 hover:rotate-12">
+                        <div>
+                            <h1 class="text-lg font-bold text-white neon-text-glow">CSJM University</h1>
+                            <p class="text-xs text-gray-400">Kanpur, Uttar Pradesh</p>
+                        </div>
+                    </a>
+                    <nav class="hidden md:flex space-x-8 items-center">
+                        <a href="#" class="nav-link-hover font-medium">Home</a>
+                        <a href="#" class="nav-link-hover font-medium">About</a>
+                        <a href="#" class="nav-link-hover font-medium">Academics</a>
+                        <a href="#" class="nav-link-hover font-medium">Admissions</a>
+                        <a href="#" class="nav-link-hover font-medium">Research</a>
+                        <a href="#" id="login-btn-home" class="neon-btn">Login</a>
+                    </nav>
+                    <button class="md:hidden text-cyan-400">
+                        <i class="fas fa-bars fa-2x"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero-section text-white py-24 md:py-32">
+            <div class="container mx-auto text-center px-4">
+                <h2 class="text-4xl md:text-6xl font-bold mb-4 neon-text-glow animate-pulse">Shape Tomorrow's World</h2>
+                <p class="text-lg md:text-xl mb-10 max-w-3xl mx-auto text-gray-300">Join an A++ NAAC accredited institution where innovation meets excellence. Your journey to the future starts here.</p>
+                <a href="#" class="neon-btn text-lg">Explore Programs</a>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <main class="container mx-auto px-4 py-16">
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Left Column: Useful Links & News -->
+                <div class="md:col-span-1 space-y-8">
+                    <div class="card p-6 rounded-lg hover:shadow-cyan-500/20 hover:shadow-lg transition-shadow">
+                        <h3 class="text-xl font-bold mb-4 border-b border-cyan-500/30 pb-2 text-cyan-400">Quick Access</h3>
+                        <ul class="space-y-3">
+                            <li><a href="#" class="flex items-center text-gray-300 hover:text-cyan-400 transition"><i class="fas fa-bullhorn mr-3 text-cyan-400"></i>Admissions 2025-26</a></li>
+                            <li><a href="#" class="flex items-center text-gray-300 hover:text-cyan-400 transition"><i class="fas fa-graduation-cap mr-3 text-cyan-400"></i>Distance Education</a></li>
+                            <li><a href="#" class="flex items-center text-gray-300 hover:text-cyan-400 transition"><i class="fas fa-lightbulb mr-3 text-cyan-400"></i>Innovation Hub</a></li>
+                            <li><a href="#" class="flex items-center text-gray-300 hover:text-cyan-400 transition"><i class="fas fa-file-alt mr-3 text-cyan-400"></i>Results Portal</a></li>
+                        </ul>
+                    </div>
+                    <div class="card p-6 rounded-lg hover:shadow-cyan-500/20 hover:shadow-lg transition-shadow">
+                        <h3 class="text-xl font-bold mb-4 border-b border-cyan-500/30 pb-2 text-cyan-400">Notices & Circulars</h3>
+                        <div class="space-y-4 max-h-96 overflow-y-auto">
+                            <div class="border-l-4 border-cyan-500 pl-4"><p class="font-semibold">PhD Entrance Exam 2025-26 Results</p><p class="text-sm text-gray-400">July 29, 2025</p></div>
+                            <div class="border-l-4 border-green-400 pl-4"><p class="font-semibold">Revised BAMS/BUMS Exam Scheme</p><p class="text-sm text-gray-400">July 29, 2025</p></div>
+                            <div class="border-l-4 border-pink-500 pl-4"><p class="font-semibold">PhD Interview Schedule Released</p><p class="text-sm text-gray-400">July 28, 2025</p></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: About, Events, Authorities -->
+                <div class="md:col-span-2 space-y-12">
+                    <div class="flip-card h-64">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front card p-6 rounded-lg flex flex-col justify-center"><h3 class="text-2xl font-bold mb-4 text-cyan-400 neon-text-glow">About CSJM University</h3><p class="text-gray-300 leading-relaxed">Chhatrapati Shahu Ji Maharaj University stands as a hallmark of higher education...</p></div>
+                            <div class="flip-card-back"><h3 class="font-bold text-2xl mb-2">Our Legacy</h3><p class="mb-4">Dedicated to scholastic benefit and empowering students for the future.</p><a href="#" class="bg-black/70 text-white font-bold py-2 px-6 rounded-lg hover:bg-black transition">Discover More</a></div>
+                        </div>
+                    </div>
                     <div>
-                        <h1 class="text-lg font-bold text-white neon-text-glow">CSJM University</h1>
-                        <p class="text-xs text-gray-400">Kanpur, Uttar Pradesh</p>
+                        <h3 class="text-2xl font-bold mb-6 text-cyan-400 neon-text-glow">Featured Events</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="flip-card h-80"><div class="flip-card-inner"><div class="flip-card-front card overflow-hidden"><img src="https://placehold.co/600x400/1a1a3a/03e9f4?text=AI+Workshop" alt="Event" class="w-full h-48 object-cover"><div class="p-4"><h4 class="font-bold text-lg mb-2 text-white">Pedagogy 5.0 Workshop</h4><p class="text-sm text-gray-400">Advancing Teaching & Research with AI.</p></div></div><div class="flip-card-back"><h4 class="font-bold text-xl mb-2">Pedagogy 5.0</h4><p class="mb-4">Explore the future of education.</p><a href="#" class="bg-black/70 text-white font-bold py-2 px-6 rounded-lg hover:bg-black transition">Register Now</a></div></div></div>
+                            <div class="flip-card h-80"><div class="flip-card-inner"><div class="flip-card-front card overflow-hidden"><img src="https://placehold.co/600x400/1a1a3a/f403e9?text=Yoga+Day" alt="Event" class="w-full h-48 object-cover"><div class="p-4"><h4 class="font-bold text-lg mb-2 text-white">International Yoga Day 2025</h4><p class="text-sm text-gray-400">A day of wellness and tranquility.</p></div></div><div class="flip-card-back"><h4 class="font-bold text-xl mb-2">Yoga Day 2025</h4><p class="mb-4">Find your inner peace.</p><a href="#" class="bg-black/70 text-white font-bold py-2 px-6 rounded-lg hover:bg-black transition">View Gallery</a></div></div></div>
+                        </div>
                     </div>
-                </a>
-                <nav class="hidden md:flex space-x-8 items-center">
-                    <a href="https://csjmu.ac.in/" class="nav-link-hover font-medium">Home</a>
-                    <a href="https://csjmu.ac.in/university/about-university/" class="nav-link-hover font-medium">About</a>
-                    <a href="#" class="nav-link-hover font-medium">Academics</a>
-                    <a href="https://csjmu.ac.in/admissions202526/" class="nav-link-hover font-medium">Admissions</a>
-                    <a href="https://csjmu.ac.in/csjmu-research/" class="nav-link-hover font-medium">Research</a>
-                    <a href="#" class="neon-btn">Contact</a>
-                </nav>
-                <button class="md:hidden text-cyan-400">
-                    <i class="fas fa-bars fa-2x"></i>
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero-section text-white py-24 md:py-32">
-        <div class="container mx-auto text-center px-4">
-            <h2 class="text-4xl md:text-6xl font-bold mb-4 neon-text-glow animate-pulse">Shape Tomorrow's World</h2>
-            <p class="text-lg md:text-xl mb-10 max-w-3xl mx-auto text-gray-300">Join an A++ NAAC accredited institution where innovation meets excellence. Your journey to the future starts here.</p>
-            <a href="https://csjmu.ac.in/admissions202526/" class="neon-btn text-lg">Explore Programs</a>
-        </div>
-    </section>
-
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 py-16">
-        <div class="grid md:grid-cols-3 gap-8">
-            <!-- Left Column: Useful Links & News -->
-            <div class="md:col-span-1 space-y-8">
-                <!-- Useful Links -->
-                <div class="card p-6 rounded-lg hover:shadow-cyan-500/20 hover:shadow-lg transition-shadow">
-                    <h3 class="text-xl font-bold mb-4 border-b border-cyan-500/30 pb-2 text-cyan-400">Quick Access</h3>
-                    <ul class="space-y-3">
-                        <li><a href="https://csjmu.ac.in/admissions202526/" class="flex items-center text-gray-300 hover:text-cyan-400 transition"><i class="fas fa-bullhorn mr-3 text-cyan-400"></i>Admissions 2025-26</a></li>
-                        <li><a href="https://csjmu.ac.in/decode/" class="flex items-center text-gray-300 hover:text-cyan-400 transition"><i class="fas fa-graduation-cap mr-3 text-cyan-400"></i>Distance Education</a></li>
-                        <li><a href="https://innovation.csjmu.ac.in/" class="flex items-center text-gray-300 hover:text-cyan-400 transition"><i class="fas fa-lightbulb mr-3 text-cyan-400"></i>Innovation Hub</a></li>
-                        <li><a href="https://csjmu.ac.in/results/results/" class="flex items-center text-gray-300 hover:text-cyan-400 transition"><i class="fas fa-file-alt mr-3 text-cyan-400"></i>Results Portal</a></li>
-                    </ul>
-                </div>
-                <!-- Notices -->
-                <div class="card p-6 rounded-lg hover:shadow-cyan-500/20 hover:shadow-lg transition-shadow">
-                    <h3 class="text-xl font-bold mb-4 border-b border-cyan-500/30 pb-2 text-cyan-400">Notices & Circulars</h3>
-                    <div class="space-y-4 max-h-96 overflow-y-auto">
-                        <div class="border-l-4 border-cyan-500 pl-4">
-                            <p class="font-semibold">PhD Entrance Exam 2025-26 Results</p>
-                            <p class="text-sm text-gray-400">July 29, 2025</p>
-                        </div>
-                        <div class="border-l-4 border-green-400 pl-4">
-                            <p class="font-semibold">Revised BAMS/BUMS Exam Scheme</p>
-                            <p class="text-sm text-gray-400">July 29, 2025</p>
-                        </div>
-                        <div class="border-l-4 border-pink-500 pl-4">
-                            <p class="font-semibold">PhD Interview Schedule Released</p>
-                            <p class="text-sm text-gray-400">July 28, 2025</p>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 text-cyan-400 neon-text-glow">Our Leadership</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+                            <div class="flip-card h-64"><div class="flip-card-inner"><div class="flip-card-front card p-4 flex flex-col justify-center items-center"><img src="https://csjmu.ac.in/wp-content/uploads/2021/11/governer.jpeg" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-cyan-400"><h4 class="font-bold text-white">Smt. Anandiben Patel</h4><p class="text-sm text-gray-400">Hon'ble Chancellor</p></div><div class="flip-card-back"><h4 class="font-bold text-lg">Smt. Anandiben Patel</h4><p class="mb-4 text-sm">Guiding our university.</p><a href="#" class="bg-black/70 text-white font-bold py-2 px-4 rounded-lg hover:bg-black transition text-sm">View Bio</a></div></div></div>
+                            <div class="flip-card h-64"><div class="flip-card-inner"><div class="flip-card-front card p-4 flex flex-col justify-center items-center"><img src="https://csjmu.ac.in/wp-content/uploads/2021/11/chief-minister.jpeg" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-cyan-400"><h4 class="font-bold text-white">Shri Yogi Adityanath</h4><p class="text-sm text-gray-400">Hon'ble Chief Minister</p></div><div class="flip-card-back"><h4 class="font-bold text-lg">Shri Yogi Adityanath</h4><p class="mb-4 text-sm">Supporting educational excellence.</p><a href="#" class="bg-black/70 text-white font-bold py-2 px-4 rounded-lg hover:bg-black transition text-sm">View Bio</a></div></div></div>
+                            <div class="flip-card h-64"><div class="flip-card-inner"><div class="flip-card-front card p-4 flex flex-col justify-center items-center"><img src="https://csjmu.ac.in/wp-content/uploads/2022/08/vc-sir-csjmu.jpg" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-cyan-400"><h4 class="font-bold text-white">Prof. Vinay Kumar Pathak</h4><p class="text-sm text-gray-400">Vice Chancellor</p></div><div class="flip-card-back"><h4 class="font-bold text-lg">Prof. Vinay Kumar Pathak</h4><p class="mb-4 text-sm">Leading with vision.</p><a href="#" class="bg-black/70 text-white font-bold py-2 px-4 rounded-lg hover:bg-black transition text-sm">View Bio</a></div></div></div>
                         </div>
                     </div>
                 </div>
             </div>
+        </main>
 
-            <!-- Right Column: About, Events, Authorities -->
-            <div class="md:col-span-2 space-y-12">
-                <!-- About Section -->
-                <div class="flip-card h-64">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front card p-6 rounded-lg flex flex-col justify-center">
-                            <h3 class="text-2xl font-bold mb-4 text-cyan-400 neon-text-glow">About CSJM University</h3>
-                            <p class="text-gray-300 leading-relaxed">Chhatrapati Shahu Ji Maharaj University stands as a hallmark of higher education, fostering an inclusive community where students from diverse backgrounds collaborate...</p>
-                        </div>
-                        <div class="flip-card-back">
-                            <h3 class="font-bold text-2xl mb-2">Our Legacy</h3>
-                            <p class="mb-4">Dedicated to scholastic benefit and empowering students for the future.</p>
-                            <a href="https://csjmu.ac.in/university/about-university/" class="bg-black/70 text-white font-bold py-2 px-6 rounded-lg hover:bg-black transition">Discover More</a>
-                        </div>
-                    </div>
+        <!-- Footer -->
+        <footer class="bg-gray-900/50 mt-16 border-t border-cyan-500/20">
+            <div class="container mx-auto px-4 py-10"><div class="text-center text-sm text-gray-500"><p>&copy; 2025 Chhatrapati Shahu Ji Maharaj University, Kanpur. All Rights Reserved.</p></div></div>
+        </footer>
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- PORTAL SECTION (Initially Hidden) -->
+    <!-- =================================================================== -->
+    <div id="portal-section" class="hidden">
+        <!-- Login Page -->
+        <div id="login-page" class="flex items-center justify-center min-h-screen bg-gray-200">
+            <div class="w-full max-w-md p-8 space-y-6 bg-white rounded-xl shadow-lg">
+                <div class="text-center">
+                    <img src="https://csjmu.ac.in/wp-content/uploads/2021/12/cropped-csjm-university-logo-big-192x192.png" onerror="this.onerror=null;this.src='https://placehold.co/96x96/003366/FFFFFF?text=CSJMU';" alt="CSJMU Logo" class="w-24 h-24 mx-auto mb-4">
+                    <h1 class="text-3xl font-bold text-gray-800">CSJMU Campus Portal</h1>
+                    <p class="mt-2 text-gray-600">Welcome! Please select your role to login.</p>
                 </div>
-
-                <!-- University Events -->
-                <div>
-                    <h3 class="text-2xl font-bold mb-6 text-cyan-400 neon-text-glow">Featured Events</h3>
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div class="flip-card h-80">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front card overflow-hidden">
-                                    <img src="https://placehold.co/600x400/1a1a3a/03e9f4?text=AI+Workshop" alt="Event" class="w-full h-48 object-cover">
-                                    <div class="p-4">
-                                        <h4 class="font-bold text-lg mb-2 text-white">Pedagogy 5.0 Workshop</h4>
-                                        <p class="text-sm text-gray-400">Advancing Teaching & Research with AI and Technology.</p>
-                                    </div>
-                                </div>
-                                <div class="flip-card-back">
-                                    <h4 class="font-bold text-xl mb-2">Pedagogy 5.0</h4>
-                                    <p class="mb-4">Join the workshop to explore the future of education.</p>
-                                    <a href="#" class="bg-black/70 text-white font-bold py-2 px-6 rounded-lg hover:bg-black transition">Register Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flip-card h-80">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front card overflow-hidden">
-                                    <img src="https://placehold.co/600x400/1a1a3a/f403e9?text=Yoga+Day" alt="Event" class="w-full h-48 object-cover">
-                                    <div class="p-4">
-                                        <h4 class="font-bold text-lg mb-2 text-white">International Yoga Day 2025</h4>
-                                        <p class="text-sm text-gray-400">A day of wellness and tranquility.</p>
-                                    </div>
-                                </div>
-                                <div class="flip-card-back">
-                                    <h4 class="font-bold text-xl mb-2">Yoga Day 2025</h4>
-                                    <p class="mb-4">Celebrate with us and find your inner peace.</p>
-                                    <a href="#" class="bg-black/70 text-white font-bold py-2 px-6 rounded-lg hover:bg-black transition">View Gallery</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="flex border-b">
+                    <button id="student-tab" class="tab-btn flex-1 p-3 border-b-2 border-transparent text-gray-500" onclick="switchRole('student')"><i class="fas fa-user-graduate mr-2"></i>Student</button>
+                    <button id="faculty-tab" class="tab-btn flex-1 p-3 border-b-2 border-transparent text-gray-500" onclick="switchRole('faculty')"><i class="fas fa-chalkboard-teacher mr-2"></i>Faculty</button>
                 </div>
+                <form id="student-login-form"><div class="space-y-4"><div><label for="branch-select" class="block text-sm font-medium text-gray-700 mb-1">Select Branch</label><select id="branch-select" name="branch" class="w-full bg-gray-50 border border-gray-300 text-gray-900 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"><option value="CSE1">CSE1</option><option value="CSE2">CSE2</option><option value="CSE3">CSE3</option><option value="CSE-AI">CSE-AI</option></select></div><div><label for="roll-number" class="block text-sm font-medium text-gray-700 mb-1">Enter Roll Number</label><input type="text" id="roll-number" name="roll-number" class="w-full bg-gray-50 border border-gray-300 text-gray-900 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g., 25001390001"></div></div><div class="mt-6"><button type="submit" class="w-full btn-primary flex items-center justify-center gap-2"><i class="fas fa-sign-in-alt"></i> Login as Student</button></div></form>
+                <form id="faculty-login-form" class="hidden"><div class="space-y-4"><div><label for="faculty-id" class="block text-sm font-medium text-gray-700 mb-1">Faculty ID</label><input type="text" id="faculty-id" class="w-full bg-gray-50 border border-gray-300 text-gray-900 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g., F-CS-01"></div></div><div class="mt-6"><button type="submit" class="w-full btn-primary flex items-center justify-center gap-2"><i class="fas fa-sign-in-alt"></i> Login as Faculty</button></div></form>
+                <p id="login-error" class="text-red-500 text-center mt-4 hidden"></p>
+                <p class="text-xs text-center text-gray-500 mt-6">© 2024 CSJMU, Kanpur. All rights reserved.</p>
+            </div>
+        </div>
 
-                <!-- Authorities -->
-                <div>
-                    <h3 class="text-2xl font-bold mb-6 text-cyan-400 neon-text-glow">Our Leadership</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
-                        <div class="flip-card h-64">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front card p-4 flex flex-col justify-center items-center">
-                                    <img src="https://csjmu.ac.in/wp-content/uploads/2021/11/governer.jpeg" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-cyan-400">
-                                    <h4 class="font-bold text-white">Smt. Anandiben Patel</h4>
-                                    <p class="text-sm text-gray-400">Hon'ble Chancellor</p>
-                                </div>
-                                <div class="flip-card-back">
-                                    <h4 class="font-bold text-lg">Smt. Anandiben Patel</h4>
-                                    <p class="mb-4 text-sm">Guiding our university towards a brighter future.</p>
-                                    <a href="http://upgovernor.gov.in/" class="bg-black/70 text-white font-bold py-2 px-4 rounded-lg hover:bg-black transition text-sm">View Bio</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flip-card h-64">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front card p-4 flex flex-col justify-center items-center">
-                                    <img src="https://csjmu.ac.in/wp-content/uploads/2021/11/chief-minister.jpeg" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-cyan-400">
-                                    <h4 class="font-bold text-white">Shri Yogi Adityanath</h4>
-                                    <p class="text-sm text-gray-400">Hon'ble Chief Minister</p>
-                                </div>
-                                <div class="flip-card-back">
-                                    <h4 class="font-bold text-lg">Shri Yogi Adityanath</h4>
-                                    <p class="mb-4 text-sm">Supporting educational excellence across the state.</p>
-                                    <a href="http://upcmo.up.nic.in/" class="bg-black/70 text-white font-bold py-2 px-4 rounded-lg hover:bg-black transition text-sm">View Bio</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flip-card h-64">
-                             <div class="flip-card-inner">
-                                <div class="flip-card-front card p-4 flex flex-col justify-center items-center">
-                                    <img src="https://csjmu.ac.in/wp-content/uploads/2022/08/vc-sir-csjmu.jpg" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-cyan-400">
-                                    <h4 class="font-bold text-white">Prof. Vinay Kumar Pathak</h4>
-                                    <p class="text-sm text-gray-400">Vice Chancellor</p>
-                                </div>
-                                <div class="flip-card-back">
-                                    <h4 class="font-bold text-lg">Prof. Vinay Kumar Pathak</h4>
-                                    <p class="mb-4 text-sm">Leading our institution with vision and dedication.</p>
-                                    <a href="https://csjmu.ac.in/frontpage/vice-chancellors-profile/" class="bg-black/70 text-white font-bold py-2 px-4 rounded-lg hover:bg-black transition text-sm">View Bio</a>
-                                </div>
-                            </div>
+        <!-- Main App -->
+        <div id="app" class="hidden min-h-screen">
+            <div id="sidebar" class="csjmu-blue text-gray-200 w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out">
+                <a href="#" class="text-white flex items-center space-x-3 px-4"><img src="https://csjmu.ac.in/wp-content/uploads/2021/12/cropped-csjm-university-logo-big-192x192.png" onerror="this.onerror=null;this.src='https://placehold.co/48x48/003366/FFFFFF?text=CSJMU';" alt="CSJMU Logo" class="w-12 h-12"><span id="portal-title" class="text-xl font-bold"></span></a>
+                <nav id="nav-links"></nav>
+            </div>
+            <div class="flex-1 flex flex-col bg-gray-100">
+                <header class="bg-white shadow-md p-4 flex justify-between items-center">
+                    <button id="mobile-menu-button" class="md:hidden text-gray-600"><i class="fas fa-bars text-2xl"></i></button>
+                    <div class="relative hidden md:block"><span class="absolute inset-y-0 left-0 flex items-center pl-3"><i class="fas fa-search text-gray-400"></i></span><input class="form-input pl-10 rounded-full w-full" type="text" placeholder="Search..."></div>
+                    <div class="flex items-center space-x-4">
+                        <a href="#" class="text-gray-600"><i class="fas fa-bell"></i></a>
+                        <div class="relative">
+                            <button id="profile-button" class="flex items-center space-x-2"><img id="profile-pic-nav" class="w-10 h-10 rounded-full" src="" alt="Profile"><span id="profile-name-nav" class="font-semibold"></span><i class="fas fa-chevron-down text-sm"></i></button>
+                            <div id="profile-dropdown" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-xl z-20 hidden"><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a><a href="#" onclick="logout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a></div>
                         </div>
                     </div>
+                </header>
+                <main id="main-content" class="flex-1 p-4 md:p-8 overflow-y-auto"></main>
+            </div>
+        </div>
+        
+        <!-- Holiday Modal -->
+        <div id="holiday-modal" class="hidden fixed inset-0 w-full h-full z-50 flex items-center justify-center modal-overlay">
+            <div class="glass-effect w-full max-w-2xl rounded-2xl shadow-2xl p-6 m-4 text-white">
+                 <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-2xl font-bold">Holiday List - 2025</h2>
+                    <button id="close-modal-button" class="text-white text-3xl font-bold">&times;</button>
+                </div>
+                <div class="overflow-y-auto max-h-[70vh]">
+                    <table class="w-full text-left">
+                        <thead><tr class="bg-gray-800/50"><th class="p-3 text-sm font-semibold tracking-wide">Date</th><th class="p-3 text-sm font-semibold tracking-wide">Holiday Name</th><th class="p-3 text-sm font-semibold tracking-wide">Day</th></tr></thead>
+                        <tbody id="holiday-list-body"></tbody>
+                    </table>
                 </div>
             </div>
         </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900/50 mt-16 border-t border-cyan-500/20">
-        <div class="container mx-auto px-4 py-10">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <h4 class="font-bold text-lg mb-4 text-cyan-400">CSJM University</h4>
-                    <p class="text-sm text-gray-400">Kalyanpur, Kanpur-208024</p>
-                    <div class="flex space-x-4 mt-4">
-                        <a href="https://facebook.com/csjmuofficial" target="_blank" class="text-gray-400 hover:text-cyan-400 transition"><i class="fab fa-facebook fa-lg"></i></a>
-                        <a href="https://twitter.com/csjmuofficial" target="_blank" class="text-gray-400 hover:text-cyan-400 transition"><i class="fab fa-twitter fa-lg"></i></a>
-                        <a href="https://www.instagram.com/csjmuofficial" target="_blank" class="text-gray-400 hover:text-cyan-400 transition"><i class="fab fa-instagram fa-lg"></i></a>
-                        <a href="https://www.youtube.com/@csjmuofficial" target="_blank" class="text-gray-400 hover:text-cyan-400 transition"><i class="fab fa-youtube fa-lg"></i></a>
-                    </div>
-                </div>
-                <div>
-                    <h4 class="font-bold text-lg mb-4 text-cyan-400">Policies</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="http://csjmu.ac.in/frontpage/privacy-policy/" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
-                        <li><a href="http://csjmu.ac.in/frontpage/disclaimer/" class="text-gray-400 hover:text-white">Disclaimer</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold text-lg mb-4 text-cyan-400">Links</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="http://upgovernor.gov.in/en" target="_blank" class="text-gray-400 hover:text-white">Raj Bhavan, UP</a></li>
-                        <li><a href="http://uphed.gov.in/" target="_blank" class="text-gray-400 hover:text-white">Higher Education, UP</a></li>
-                    </ul>
-                </div>
-                 <div>
-                    <h4 class="font-bold text-lg mb-4 text-cyan-400">Newsletter</h4>
-                    <p class="text-sm text-gray-400 mb-4">Stay updated with our latest news.</p>
-                    <div class="flex">
-                        <input type="email" placeholder="Your Email" class="w-full rounded-l-md px-4 py-2 bg-gray-800 text-white border border-gray-700 focus:outline-none focus:border-cyan-400">
-                        <button class="bg-cyan-500 text-black px-4 rounded-r-md hover:bg-cyan-400 font-bold transition">Go</button>
-                    </div>
-                </div>
-            </div>
-            <div class="border-t border-gray-700/50 mt-8 pt-6 text-center text-sm text-gray-500">
-                <p>&copy; 2025 Chhatrapati Shahu Ji Maharaj University, Kanpur. All Rights Reserved.</p>
-            </div>
+        
+        <!-- General Modal Structure -->
+        <div id="modal" class="hidden">
+            <div class="modal-backdrop" onclick="closeModal()"></div>
+            <div class="modal-content bg-white p-8 rounded-lg shadow-xl w-11/12 md:w-1/2 lg:w-1/3 max-h-[90vh] overflow-y-auto"><div id="modal-body"></div></div>
         </div>
-    </footer>
+    </div>
+
+<script>
+// --- DATA STORE (Corrected Data) ---
+const ALL_STUDENTS = {
+    'CSE1': [
+        { roll: '25001390001', name: 'AAYUSH CHAURASIYA' }, { roll: '25001390002', name: 'ABHIJEET SINGH' }, { roll: '25001390003', name: 'ABHINANDAN RAJ' },
+        { roll: '25001390004', name: 'ABHINAV KANAUJIA' }, { roll: '25001390005', name: 'ABHISHEK' }, { roll: '25001390006', name: 'ABHISHEK VERMA' },
+        { roll: '25001390007', name: 'ACHINTYA UPADHYAY' }, { roll: '25001390008', name: 'ADARSH KUMAR' }, { roll: '25001390009', name: 'ADARSH SINGH' },
+        { roll: '25001390010', name: 'ADITI SAHU' }, { roll: '25001390011', name: 'ADITYA KUMAR CHAURASIYA' }, { roll: '25001390012', name: 'ADITYA PATEL' },
+        { roll: '25001390013', name: 'ADITYA PATEL' }, { roll: '25001390014', name: 'AGRIMA TRIPATHI' }, { roll: '25001390015', name: 'AJAY KUMAR KARN' },
+        { roll: '25001390016', name: 'AKANKSHA RAI' }, { roll: '25001390017', name: 'AKHILESH MAURYA' }, { roll: '25001390018', name: 'AKRITI GANGWAR' },
+        { roll: '25001390019', name: 'AKSHARA SINGH' }, { roll: '25001390020', name: 'ALOK PAL' }, { roll: '25001390021', name: 'AMAN SHARMA' },
+        { roll: '25001390022', name: 'AMAN SINGH' }, { roll: '25001390023', name: 'AMIT GUPTA' }, { roll: '25001390024', name: 'AMIT KUMAR SINGH' },
+        { roll: '25001390025', name: 'AMIT VERMA' }, { roll: '25001390026', name: 'ANAMIKA DUBEY' }, { roll: '25001390027', name: 'ANAND KUMAR' },
+        { roll: '25001390028', name: 'ANANT KUMAR SINGH' }, { roll: '25001390029', name: 'ANANYA PAL' }, { roll: '25001390030', name: 'ANAVI MISHRA' },
+        { roll: '25001390031', name: 'ANGEL VERMA' }, { roll: '25001390032', name: 'ANIRUDHYA SHOW' }, { roll: '25001390033', name: 'ANJALI SINGH' },
+        { roll: '25001390034', name: 'ANKIT KUMAR' }, { roll: '25001390035', name: 'ANSH VERMA' }, { roll: '25001390036', name: 'ANSHIKA SAHU' },
+        { roll: '25001390037', name: 'ANSHIKA SINGH' }, { roll: '25001390038', name: 'ANSHIKA SRIVASTAVA' }, { roll: '25001390039', name: 'ANSHU YADAV' },
+        { roll: '25001390040', name: 'ANSHUL RAJPUT' }, { roll: '25001390041', name: 'ANSHUMAN BAJPAI' }, { roll: '25001390042', name: 'ANURAN CHOWDHURY' },
+        { roll: '25001390043', name: 'ANUSHRI SHRAWAN' }, { roll: '25001390044', name: 'ARADHYA DWIVEDI' }, { roll: '25001390045', name: 'ARCHISHA KUMAR' },
+        { roll: '25001390046', name: 'ARIB TAIYAB' }
+    ],
+    'CSE2': [
+        { roll: '25001390056', name: 'AYUSH JAISWAL' }, { roll: '25001390067', name: 'DOLI KUMARI' }, { roll: '25001390068', name: 'GARIMA RAJPUT' }, { roll: '25001390069', name: 'HAMIRA AZMI' },
+        { roll: '25001390070', name: 'HARSHIT' }, { roll: '25001390071', name: 'HARSHIT HIMKAR' }, { roll: '25001390072', name: 'HIMANSHU VERMA' },
+        { roll: '25001390073', name: 'ISHA KUMARI' }, { roll: '25001390074', name: 'JAGRITI RAI' }, { roll: '25001390075', name: 'JAHNVI' },
+        { roll: '25001390076', name: 'JAI SHIVAM SINGH' }, { roll: '25001390077', name: 'JANSHU VERMA' }, { roll: '25001390078', name: 'JANVI GUPTA' },
+        { roll: '25001390079', name: 'KANAK RAJPUT' }, { roll: '25001390080', name: 'KANISHK JAIN' }, { roll: '25001390081', name: 'KARTIK BHARTIYA' },
+        { roll: '25001390082', name: 'KESAR JAISWAL' }, { roll: '25001390083', name: 'KHUSHI SAINI' }, { roll: '25001390084', name: 'KHUSHI SINGH' },
+        { roll: '25001390085', name: 'KHUSHI YADAV' }, { roll: '25001390086', name: 'KRISHNA' }, { roll: '25001390087', name: 'KRISHNA KUMARY' },
+        { roll: '25001390088', name: 'KUNAL KUMAR SINGH' }, { roll: '25001390089', name: 'MAHAVEER GAUTAM' }, { roll: '25001390090', name: 'MAHI' },
+        { roll: '25001390091', name: 'MANAS BALIASE' }, { roll: '25001390092', name: 'MANAV PRAKASH' }, { roll: '25001390093', name: 'MANISHA VISHWAKARMA' },
+        { roll: '25001390094', name: 'MOHD SALIK' }, { roll: '25001390095', name: 'MONIS KHAN' }, { roll: '25001390096', name: 'NAWASVI KANAUJIA' },
+        { roll: '25001390097', name: 'NEHA KUMARI' }, { roll: '25001390098', name: 'NIKHIL' }, { roll: '25001390099', name: 'NIKHIL' },
+        { roll: '25001390100', name: 'OM SRIVASTAVA' }, { roll: '25001390101', name: 'OM PRAKASH MAURYA' }, { roll: '25001390102', name: 'PANKAJ VERMA' },
+        { roll: '25001390103', name: 'PRADEEP SHARMA' }, { roll: '25001390104', name: 'PRADHUMN BHADAURIYA' }, { roll: '25001390105', name: 'PRAKHAR SINGH RATHORE' },
+        { roll: '25001390106', name: 'PRASHANT KUMAR' }, { roll: '25001390107', name: 'PRASHANT VERDHAN' }, { roll: '25001390108', name: 'PRATIBHA DUBEY' },
+        { roll: '25001390109', name: 'PRATIBHA SINGH' }, { roll: '25001390110', name: 'PRATISHTHA JAISWAL' }, { roll: '25001390111', name: 'PRATYAKSH KUSHWAHA' },
+        { roll: '25001390112', name: 'PRIYAM MISHRA' }, { roll: '25001390114', name: 'RISHABH SHUKLA' }
+    ],
+    'CSE3': [
+        { roll: '25001390133', name: 'SANDHYA VERMA' }, { roll: '25001390134', name: 'SANKALP' }, { roll: '25001390135', name: 'SARTHAK SINGH' },
+        { roll: '25001390136', name: 'SATYAPAL' }, { roll: '25001390137', name: 'SAUMYA KATIYAR' }, { roll: '25001390138', name: 'SAURABH BAJPAI' },
+        { roll: '25001390139', name: 'SAURABH KANT' }, { roll: '25001390140', name: 'SAURABH KUMAR' }, { roll: '25001390141', name: 'SHAURYA KAMAL' },
+        { roll: '25001390142', name: 'SHEKHAR YADAV' }, { roll: '25001390143', name: 'SHIKHA VERMA' }, { roll: '25001390144', name: 'SHIVAM YADAV' },
+        { roll: '25001390145', name: 'SHIVANGI SHARMA' }, { roll: '25001390146', name: 'SHOBHIT SINGH' }, { roll: '25001390147', name: 'SHREYA TRIVEDI' },
+        { roll: '25001390148', name: 'SHREYA VERMA' }, { roll: '25001390149', name: 'SHREYA YADAV' }, { roll: '25001390150', name: 'SHREYANSH RAI' },
+        { roll: '25001390151', name: 'SHUBHAM JHA' }, { roll: '25001390152', name: 'SHUBHAM KUMAR VERMA' }, { roll: '25001390153', name: 'SHUBHAM SINGH' }
+    ],
+    'CSE-AI': [
+        { roll: '25001390231', name: 'ABHAY KUMAR' }, { roll: '25001390232', name: 'ABHISHEK SINGH' }, { roll: '25001390233', name: 'ABHISHEK VERMA' },
+        { roll: '25001390234', name: 'ADITYA DIXIT' }, { roll: '25001390235', name: 'ADITYA GUPTA' }, { roll: '25001390236', name: 'AGRIM KUMAR' },
+        { roll: '25001390237', name: 'AMAN KUMAR' }, { roll: '25001390238', name: 'AMAN KUMAR YADAV' }, { roll: '25001390239', name: 'ANKIT KUMAR' },
+        { roll: '25001390240', name: 'ANSH' }, { roll: '25001390241', name: 'ANSHIKA VERMA' }, { roll: '25001390242', name: 'ANUBHAV DWIVEDI' },
+        { roll: '25001390243', name: 'ANUJ KUMAR RANJAN' }, { roll: '25001390244', name: 'ANURAG SINGH' }, { roll: '25001390245', name: 'ARPIT SINGH KUSHWAHA' },
+        { roll: '25001390246', name: 'AYUSH TRIPATHI' }, { roll: '25001390247', name: 'GAURAV' }, { roll: '25001390248', name: 'HARSH KUMAR' },
+        { roll: '25001390249', name: 'KAMANA SRIVASTAVA' }, { roll: '25001390250', name: 'KASHISH SINGH' }, { roll: '25001390251', name: 'KAVYA BISHT' },
+        { roll: '25001390252', name: 'KISHAN SHUKLA' }, { roll: '25001390253', name: 'KRITARTH BAJPAI' }, { roll: '25001390254', name: 'AYUSH JAISWAL' }
+    ]
+};
+const ALL_FACULTY = [
+    { id: 'F-CS-01', name: 'Dr. Ram Janma', department: 'Physics', subjects: ['PHY-S101', 'PHY-S101 Lab'] }, { id: 'F-CS-02', name: 'Dr. Deepti Agarwal', department: 'Humanities', subjects: ['HSS-S101'] },
+    { id: 'F-CS-03', name: 'Dr. Ramendra Singh', department: 'CSE', subjects: ['TCA-S102'] }, { id: 'F-CS-04', name: 'Dr. Bhawini Prasad', department: 'Mathematics', subjects: ['MTH-S101'] },
+    { id: 'F-CS-05', name: 'Mr. Rishabh Prajapati', department: 'CSE', subjects: ['ISC-S101', 'ISC-S101 Lab', 'WP LAB'] },
+];
+const masterTimetable = {
+    theory: {
+        'A': { // CSE1 & CSE2
+            'Mon': [{ time: '10-11', subject: 'PHY-S101', faculty: 'Dr. Ram Janma', location: 'AB101' }, { time: '11-12', subject: 'HSS-S101', faculty: 'Dr. Deepti Agarwal', location: 'AB101' }, { time: '12-13', subject: 'TCA-S102', faculty: 'Dr. Ramendra Singh Niranjan', location: 'AB101' },],
+            'Tue': [{ time: '10-11', subject: 'MTH-S101', faculty: 'Dr. Bhawini Prasad', location: 'AB101' }, { time: '11-12', subject: 'ISC-S101', faculty: 'Mr. Rishabh Prajapati', location: 'AB101' }, { time: '12-13', subject: 'PHY-S101', faculty: 'Dr. Ram Janma', location: 'AB101' },],
+            'Wed': [{ time: '09-10', subject: 'HSS-S101', faculty: 'Dr. Deepti Agarwal', location: 'AB101' }, { time: '10-11', subject: 'PHY-S101', faculty: 'Dr. Ram Janma', location: 'AB101' }, { time: '11-12', subject: 'MTH-S101', faculty: 'Dr. Bhawini Prasad', location: 'AB101' }, { time: '12-13', subject: 'TCA-S102', faculty: 'Dr. Ramendra Singh Niranjan', location: 'AB101' },],
+            'Thu': [{ time: '09-10', subject: 'MTH-S101', faculty: 'Dr. Bhawini Prasad', location: 'AB101' }, { time: '10-11', subject: 'ISC-S101', faculty: 'Mr. Rishabh Prajapati', location: 'AB101' }, { time: '11-12', subject: 'MTH-S101', faculty: 'Dr. Bhawini Prasad', location: 'AB101' },],
+            'Fri': [{ time: '09-10', subject: 'PHY-S101', faculty: 'Dr. Ram Janma', location: 'AB101' }, { time: '10-11', subject: 'HSS-S101', faculty: 'Dr. Deepti Agarwal', location: 'AB101' }, { time: '11-12', subject: 'ISC-S101', faculty: 'Mr. Rishabh Prajapati', location: 'AB101' },],
+            'Sat': [{ time: '09-10', subject: 'MTH-S101', faculty: 'Dr. Bhawini Prasad', location: 'AB101' }, { time: '10-11', subject: 'ISC-S101', faculty: 'Mr. Rishabh Prajapati', location: 'AB101' }, { time: '11-12', subject: 'TCA-S102', faculty: 'Dr. Ramendra Singh Niranjan', location: 'AB101' },],
+        },
+        'B': { // CSE3 & CSE-AI
+            'Mon': [{ time: '14-15', subject: 'MTH-S101', faculty: 'Dr. Arpit Dwivedi', location: 'AB201' }, { time: '15-16', subject: 'HSS-S101', faculty: 'Dr. Richa Verma', location: 'AB201' }, { time: '16-17', subject: 'PHY-S101', faculty: 'Dr. Anjani Kumar', location: 'AB201' },],
+            'Tue': [{ time: '14-15', subject: 'PHY-S101', faculty: 'Dr. Anjani Kumar', location: 'AB201' }, { time: '15-16', subject: 'ISC-S101', faculty: 'Er. Prateek Srivastava', location: 'AB201' }, { time: '16-17', subject: 'TCA-S102', faculty: 'Er. Sishupal', location: 'AB201' },],
+            'Wed': [{ time: '14-15', subject: 'MTH-S101', faculty: 'Dr. Arpit Dwivedi', location: 'AB201' }, { time: '15-16', subject: 'HSS-S101', faculty: 'Dr. Richa Verma', location: 'AB201' }, { time: '16-17', subject: 'TCA-S102', faculty: 'Er. Sishupal', location: 'AB201' },],
+            'Thu': [{ time: '14-15', subject: 'PHY-S101', faculty: 'Dr. Anjani Kumar', location: 'AB201' }, { time: '15-16', subject: 'ISC-S101', faculty: 'Er. Prateek Srivastava', location: 'AB201' }, { time: '16-17', subject: 'MTH-S101', faculty: 'Dr. Arpit Dwivedi', location: 'AB201' },],
+            'Fri': [{ time: '14-15', subject: 'MTH-S101', faculty: 'Dr. Arpit Dwivedi', location: 'AB201' }, { time: '15-16', subject: 'HSS-S101', faculty: 'Dr. Richa Verma', location: 'AB201' }, { time: '16-17', subject: 'ISC-S101', faculty: 'Er. Prateek Srivastava', location: 'AB201' },],
+            'Sat': [{ time: '14-15', subject: 'PHY-S101', faculty: 'Dr. Anjani Kumar', location: 'AB201' }, { time: '15-16', subject: 'ISC-S101', faculty: 'Er. Prateek Srivastava', location: 'AB201' }, { time: '16-17', subject: 'TCA-S102', faculty: 'Er. Sishupal', location: 'AB201' },],
+        }
+    },
+    labs: {
+        'A1': { 'Mon': { time: '14-17', subject: 'PHY-S101 Lab' }, 'Tue': { time: '14-17', subject: 'WP LAB' }, 'Wed': { time: '14-17', subject: 'WP LAB' }, 'Fri': { time: '14-17', subject: 'ISC-S101 Lab' }, },
+        'A2': { 'Mon': { time: '14-17', subject: 'WP LAB' }, 'Wed': { time: '14-17', subject: 'ISC-S101 Lab' }, 'Thu': { time: '14-17', subject: 'WP LAB' }, 'Fri': { time: '14-17', subject: 'PHY-S101 Lab' }, },
+        'A3': { 'Mon': { time: '14-17', subject: 'ISC-S101 Lab' }, 'Wed': { time: '14-17', subject: 'PHY-S101 Lab' }, 'Fri': { time: '14-17', subject: 'WP LAB' }, 'Sat': { time: '14-17', subject: 'WP LAB' }, },
+        'B1': { 'Tue': { time: '10-13', subject: 'PHY-S101 Lab' }, 'Wed': { time: '10-13', subject: 'WP Lab' }, 'Thu': { time: '10-13', subject: 'WP LAB' }, 'Sat': { time: '10-13', subject: 'ISC-S101 Lab' }, },
+        'B2': { 'Tue': { time: '10-13', subject: 'WP LAB' }, 'Thu': { time: '10-13', subject: 'ISC-S101 Lab' }, 'Fri': { time: '10-13', subject: 'WP Lab' }, 'Sat': { time: '10-13', subject: 'PHY-S101 Lab' }, },
+        'B3': { 'Mon': { time: '10-13', subject: 'WP Lab' }, 'Tue': { time: '10-13', subject: 'ISC-S101 Lab' }, 'Thu': { time: '10-13', subject: 'PHY-S101 Lab' }, 'Sat': { time: '10-13', subject: 'WP LAB' }, }
+    }
+};
+const holidays2025 = [
+    { date: "2025-01-26", name: "Republic Day", day: "Sunday" }, { date: "2025-03-14", name: "Holi", day: "Friday" },
+    { date: "2025-08-15", name: "Independence Day", day: "Friday" }, { date: "2025-10-02", name: "Gandhi Jayanti", day: "Thursday" },
+    { date: "2025-12-25", name: "Christmas", day: "Thursday" },
+    { date: "2025-08-09", name: "Raksha Bandhan", day: "Saturday" }, { date: "2025-08-16", name: "Janmashtami", day: "Saturday" }
+];
+const MOCK_DATA = {
+    student: {
+        attendance: { overall: 82, subjects: [ { name: "Data Structures", total: 40, present: 35, percentage: 87.5 }, { name: "Algorithms", total: 38, present: 30, percentage: 78.9 }, { name: "Operating Systems", total: 42, present: 36, percentage: 85.7 }, { name: "Database Systems", total: 35, present: 25, percentage: 71.4 }, { name: "Web Technology", total: 45, present: 40, percentage: 88.9 }, ], dailyLog: [ { date: '2025-08-08', subject: 'Data Structures', status: 'Present' }, { date: '2025-08-08', subject: 'Algorithms', status: 'Present' }, { date: '2025-08-07', subject: 'Operating Systems', status: 'Absent' }, { date: '2025-08-07', subject: 'Database Systems', status: 'Present' }, { date: '2025-08-06', subject: 'Web Technology', status: 'Present' }, ] },
+        assignments: [{ id: 1, subject: "Data Structures", title: "Implement Linked List", deadline: "2024-08-15", status: "Submitted", marks: "18/20" }, { id: 2, subject: "Algorithms", title: "Analysis of Sorting Algorithms", deadline: "2024-08-20", status: "Pending" }],
+        quizzes: [ { id: 1, subject: "Operating Systems", title: "Process Scheduling Quiz", score: "9/10" }, { id: 2, subject: "Web Technology", title: "HTML & CSS Basics", score: "19/20" }],
+    },
+    faculty: {
+        assignments: [{ id: 1, subject: "ISC-S101", class: "CSE1", title: "Implement Linked List", deadline: "2024-08-15", submissions: 40, graded: 35 }, { id: 2, subject: "PHY-S101", class: "CSE2", title: "Lab Report 1", deadline: "2024-08-20", submissions: 38, graded: 0 }],
+        quizzes: [{ id: 1, subject: "MTH-S101", class: "CSE1", title: "Matrix Algebra Quiz", attempts: 45, avgScore: 8.5 }],
+    },
+    notices: [{ id: 1, title: "Mid-Semester Exam Schedule", date: "2024-08-05" }, { id: 2, title: "Annual Sports Meet 'SPARDHA 2024'", date: "2024-08-02" }],
+    student_records: {
+        '25001390001': {
+            attendance: [
+                { date: '2025-08-12', subject: 'PHY-S101', status: 'Present' },
+                { date: '2025-08-11', subject: 'HSS-S101', status: 'Present' },
+                { date: '2025-08-10', subject: 'PHY-S101', status: 'Absent' },
+                { date: '2025-08-09', subject: 'MTH-S101', status: 'Present' },
+                { date: '2025-08-08', subject: 'ISC-S101', status: 'Present' },
+            ]
+        },
+        '25001390002': {
+            attendance: [
+                { date: '2025-08-12', subject: 'PHY-S101', status: 'Present' },
+                { date: '2025-08-11', subject: 'HSS-S101', status: 'Absent' },
+                { date: '2025-08-10', subject: 'PHY-S101', status: 'Absent' },
+                { date: '2025-08-09', subject: 'MTH-S101', status: 'Present' },
+                { date: '2025-08-08', subject: 'ISC-S101', status: 'Present' },
+            ]
+        }
+    }
+};
+const ROLES_CONFIG = {
+    student: { title: "Student Portal", nav: [ { name: "Dashboard", icon: "fa-tachometer-alt", page: "dashboard" }, { name: "Schedule", icon: "fa-calendar-alt", page: "schedule" }, { name: "Attendance", icon: "fa-chart-pie", page: "attendance" }, { name: "Assignments", icon: "fa-tasks", page: "assignments" }, { name: "Quizzes", icon: "fa-question-circle", page: "quizzes" }, ] },
+    faculty: { title: "Faculty Portal", nav: [ { name: "Dashboard", icon: "fa-tachometer-alt", page: "dashboard" }, { name: "Mark Attendance", icon: "fa-user-check", page: "mark-attendance" }, { name: "Attendance History", icon: "fa-history", page: "attendance-history" }, { name: "Assignments", icon: "fa-edit", page: "manage-assignments" }, ] }
+};
+let currentUser = null, currentUserRole = null, attendanceChart = null, facultyAttendanceChart = null;
+
+function renderPage(page) {
+    const mainContent = document.getElementById('main-content');
+    document.querySelectorAll('.sidebar-link').forEach(link => { link.classList.remove('active'); if (link.dataset.page === page) link.classList.add('active'); });
+    if (window.innerWidth < 768) document.getElementById('sidebar').classList.add('-translate-x-full');
+    
+    // Reset background for all pages except schedule
+    mainContent.classList.remove('dark-theme-bg');
+    mainContent.style.backgroundColor = '#f0f4f8';
+    mainContent.style.color = '#1f2937';
+
+    if (currentUserRole === 'student') {
+        switch(page) {
+            case 'dashboard': mainContent.innerHTML = getStudentDashboardContent(); renderStudentAttendanceChart(); break;
+            case 'schedule': 
+                mainContent.innerHTML = getStudentScheduleContent();
+                mainContent.classList.add('dark-theme-bg');
+                mainContent.style.backgroundColor = '#0f172a';
+                mainContent.style.color = '#e2e8f0';
+                
+                renderDaySelector();
+                renderFullWeekSchedule();
+                renderHolidays();
+                const today = new Date().toLocaleDateString('en-US', { weekday: 'short' });
+                renderDaySchedule(today);
+                document.getElementById('holidays-button').addEventListener('click', () => document.getElementById('holiday-modal').classList.remove('hidden'));
+                document.getElementById('close-modal-button').addEventListener('click', () => document.getElementById('holiday-modal').classList.add('hidden'));
+                document.getElementById('holiday-modal').addEventListener('click', (e) => { if (e.target === document.getElementById('holiday-modal')) document.getElementById('holiday-modal').classList.add('hidden'); });
+                break;
+            case 'attendance': mainContent.innerHTML = getStudentAttendanceContent(); renderStudentAttendanceChart(); break;
+            case 'assignments': mainContent.innerHTML = getStudentAssignmentsContent(); break;
+            case 'quizzes': mainContent.innerHTML = getStudentQuizzesContent(); break;
+            default: mainContent.innerHTML = `<h1>Page Not Found</h1>`;
+        }
+    } else if (currentUserRole === 'faculty') {
+        switch(page) {
+            case 'dashboard': mainContent.innerHTML = getFacultyDashboardContent(); break;
+            case 'mark-attendance': mainContent.innerHTML = getFacultyAttendanceContent(); setTimeout(loadStudentList, 0); break;
+            case 'attendance-history': mainContent.innerHTML = getFacultyAttendanceHistoryContent(); break;
+            case 'manage-assignments': mainContent.innerHTML = getFacultyAssignmentsContent(); break;
+            default: mainContent.innerHTML = `<h1>Page Not Found</h1>`;
+        }
+    }
+}
+function getStudentDashboardContent() {
+    const { name, branch, roll } = currentUser;
+    return `<h1 class="text-3xl font-bold text-gray-800 mb-6">Dashboard</h1>
+        <div class="card p-6 flex flex-col md:flex-row items-center gap-6"><img src="https://placehold.co/100x100/E2E8F0/4A5568?text=${name.charAt(0)}" alt="Profile" class="w-24 h-24 rounded-full border-4 border-blue-200"><div><h2 class="text-2xl font-bold text-gray-800">${name}</h2><p class="text-gray-600">Student</p><div class="text-sm text-gray-500 mt-2"><strong>Branch:</strong> ${branch} | <strong>Roll No:</strong> ${roll}</div></div></div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6"><div class="card p-6 flex items-center gap-4"><i class="fas fa-chart-pie text-4xl text-green-500"></i><div><p class="text-gray-500">Overall Attendance</p><p class="text-2xl font-bold">${MOCK_DATA.student.attendance.overall}%</p></div></div><div class="card p-6 flex items-center gap-4"><i class="fas fa-tasks text-4xl text-yellow-500"></i><div><p class="text-gray-500">Assignments Due</p><p class="text-2xl font-bold">${MOCK_DATA.student.assignments.filter(a => a.status === 'Pending').length}</p></div></div><div class="card p-6 flex items-center gap-4"><i class="fas fa-question-circle text-4xl text-blue-500"></i><div><p class="text-gray-500">Last Quiz Score</p><p class="text-2xl font-bold">${MOCK_DATA.student.quizzes[0].score}</p></div></div></div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6"><div class="lg:col-span-2 card p-6"><h3 class="font-bold text-lg mb-4">Subject-wise Attendance</h3><div class="relative h-80"><canvas id="studentAttendanceChart"></canvas></div></div><div class="card p-6"><h3 class="font-bold text-lg mb-4">Notices</h3><ul class="space-y-3">${MOCK_DATA.notices.map(n => `<li class="p-3 bg-blue-50 rounded-lg"><p class="font-semibold">${n.title}</p><p class="text-xs text-gray-500">${n.date}</p></li>`).join('')}</ul></div></div>`;
+}
+function getStudentScheduleContent() {
+    return `<div id="schedule-page-container" class="w-full max-w-7xl">
+        <header class="flex flex-wrap justify-between items-center mb-6 px-4 gap-4">
+            <div>
+                <h1 id="welcome-message" class="text-2xl md:text-3xl font-bold">Welcome, ${currentUser.name}!</h1>
+                <p id="student-details" class="text-gray-400">Branch: ${currentUser.branch} | Roll No: ${currentUser.roll} | Group: ${currentUser.labGroup}</p>
+            </div>
+            <div class="flex items-center gap-2">
+                <button id="holidays-button" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md">Holiday List</button>
+            </div>
+        </header>
+        <main>
+            <div class="glass-effect p-6 mb-6">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-4">
+                    <h2 class="text-xl font-bold">Daily Schedule</h2>
+                    <div id="day-selector" class="flex flex-wrap gap-1 bg-gray-800/60 p-1 rounded-lg"></div>
+                </div>
+                <div id="daily-schedule-content" class="overflow-x-auto"></div>
+            </div>
+            <div class="glass-effect p-6">
+                <h2 class="text-xl font-bold mb-4">Full Week Schedule</h2>
+                <div id="full-week-schedule" class="overflow-x-auto"></div>
+            </div>
+        </main>
+    </div>`;
+}
+function getStudentAssignmentsContent() {
+    const getStatusChip = (status) => `<span class="${status === 'Pending' ? 'bg-yellow-100 text-yellow-800' : 'bg-blue-100 text-blue-800'} text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">${status}</span>`;
+    return `<h1 class="text-3xl font-bold text-gray-800 mb-6">Assignments</h1><div class="card p-6"><div class="overflow-x-auto"><table class="w-full text-left"><thead><tr class="bg-gray-100"><th class="p-3">Subject</th><th class="p-3">Title</th><th class="p-3">Deadline</th><th class="p-3">Status</th><th class="p-3">Marks</th><th class="p-3">Action</th></tr></thead><tbody>${MOCK_DATA.student.assignments.map(a => `<tr class="border-b border-gray-200"><td class="p-3">${a.subject}</td><td class="p-3 font-medium">${a.title}</td><td class="p-3">${a.deadline}</td><td class="p-3">${getStatusChip(a.status)}</td><td class="p-3">${a.marks || '--'}</td><td class="p-3"><button class="btn-primary text-sm py-1 px-3 ${a.status !== 'Pending' ? 'opacity-50' : ''}" ${a.status !== 'Pending' ? 'disabled' : ''}>${a.status === 'Pending' ? 'Submit' : 'View'}</button></td></tr>`).join('')}</tbody></table></div></div>`;
+}
+function getStudentQuizzesContent() {
+    return `<h1 class="text-3xl font-bold text-gray-800 mb-6">Quizzes</h1><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">${MOCK_DATA.student.quizzes.map(q => `<div class="card p-6"><p class="text-sm text-gray-500">${q.subject}</p><h3 class="text-lg font-bold my-2">${q.title}</h3><div class="flex justify-between items-center mt-4"><div><p class="text-sm text-gray-500">Score</p><p class="text-xl font-bold csjmu-blue-text">${q.score}</p></div><button class="btn-primary">View Results</button></div></div>`).join('')}</div>`;
+}
+function getStudentAttendanceContent() {
+    const { overall, subjects, dailyLog } = MOCK_DATA.student.attendance;
+    const getStatusChip = (status) => `<span class="${status === 'Present' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'} text-xs font-medium px-2.5 py-0.5 rounded-full">${status}</span>`;
+    return `<h1 class="text-3xl font-bold text-gray-800 mb-6">Attendance</h1><div class="grid grid-cols-1 lg:grid-cols-3 gap-6"><div class="lg:col-span-1 card p-6 flex flex-col items-center justify-center"><p class="text-lg text-gray-600">Overall Attendance</p><div class="relative h-48 w-48 my-4"><canvas id="studentAttendanceChart"></canvas></div><p class="text-6xl font-bold ${overall < 75 ? 'text-red-500' : 'text-green-500'}">${overall}%</p></div><div class="lg:col-span-2 card p-6"><h3 class="font-bold text-lg mb-4">Subject-wise Breakdown</h3><div class="overflow-x-auto"><table class="w-full text-left"><thead><tr class="bg-gray-100"><th class="p-3">Subject</th><th class="p-3">Total</th><th class="p-3">Attended</th><th class="p-3">Percentage</th></tr></thead><tbody>${subjects.map(s => `<tr class="border-b"><td class="p-3 font-medium">${s.name}</td><td class="p-3">${s.total}</td><td class="p-3">${s.present}</td><td class="p-3 font-bold ${s.percentage < 75 ? 'text-red-500' : 'text-green-600'}">${s.percentage.toFixed(1)}%</td></tr>`).join('')}</tbody></table></div></div></div><div class="card p-6 mt-6"><h3 class="font-bold text-lg mb-4">Daily Attendance Log</h3><div class="overflow-x-auto max-h-96"><table class="w-full text-left"><thead class="sticky top-0 bg-gray-100"><tr><th class="p-3">Date</th><th class="p-3">Subject</th><th class="p-3">Status</th></tr></thead><tbody>${dailyLog.map(log => `<tr class="border-b"><td class="p-3">${log.date}</td><td class="p-3 font-medium">${log.subject}</td><td class="p-3">${getStatusChip(log.status)}</td></tr>`).join('')}</tbody></table></div></div>`;
+}
+function renderStudentAttendanceChart() {
+    const ctx = document.getElementById('studentAttendanceChart'); if (!ctx) return; if (attendanceChart) attendanceChart.destroy();
+    attendanceChart = new Chart(ctx, { type: 'doughnut', data: { labels: ['Attended', 'Missed'], datasets: [{ data: [MOCK_DATA.student.attendance.overall, 100 - MOCK_DATA.student.attendance.overall], backgroundColor: ['rgba(59, 130, 246, 0.8)', 'rgba(239, 68, 68, 0.7)'], borderWidth: 1 }] }, options: { responsive: true, maintainAspectRatio: false, cutout: '70%', plugins: { legend: { position: 'bottom' } } } });
+}
+function getFacultyDashboardContent() {
+    return `<h1 class="text-3xl font-bold text-gray-800 mb-6">Faculty Dashboard</h1><div class="card p-6 flex items-center gap-6"><img src="https://placehold.co/100x100/E2E8F0/4A5568?text=${currentUser.name.charAt(0)}" alt="Profile" class="w-24 h-24 rounded-full border-4 border-blue-200"><div><h2 class="text-2xl font-bold text-gray-800">${currentUser.name}</h2><p class="text-gray-600">Faculty, ${currentUser.department}</p></div></div><div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6"><div class="card p-6"><p class="text-gray-500">Courses Assigned</p><p class="text-3xl font-bold">${currentUser.subjects.length}</p></div><div class="card p-6"><p class="text-gray-500">Pending Submissions</p><p class="text-3xl font-bold">12</p></div><div class="card p-6"><p class="text-gray-500">Classes Today</p><p class="text-3xl font-bold">3</p></div></div><div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6"><div class="card p-6"><h3 class="font-bold text-lg mb-4">Quick Actions</h3><div class="space-y-3"><button onclick="renderPage('mark-attendance')" class="btn-primary w-full text-left p-3"><i class="fas fa-user-check w-6 mr-2"></i>Mark Attendance</button><button onclick="renderPage('manage-assignments')" class="btn-primary w-full text-left p-3"><i class="fas fa-edit w-6 mr-2"></i>Create Assignment</button></div></div></div>`;
+}
+function getFacultyAttendanceContent() {
+    const today = new Date().toISOString().split('T')[0];
+    return `<h1 class="text-3xl font-bold text-gray-800 mb-6">Mark Attendance</h1><div class="card p-6"><div class="flex flex-wrap items-end gap-4 mb-6 bg-gray-50 p-4 rounded-lg"><div><label class="block text-sm font-medium">Date</label><input type="date" id="att-date" value="${today}" class="mt-1 form-input rounded-md w-full"></div><div><label class="block text-sm font-medium">Subject</label><select id="att-subject" onchange="loadStudentList()" class="mt-1 form-select rounded-md w-full">${currentUser.subjects.map(s => `<option>${s}</option>`).join('')}</select></div><div><label class="block text-sm font-medium">Class</label><select id="att-class" onchange="loadStudentList()" class="mt-1 form-select rounded-md w-full">${['CSE1', 'CSE2', 'CSE3', 'CSE-AI'].map(c => `<option value="${c}">${c}</option>`).join('')}</select></div></div><div class="overflow-x-auto"><table class="w-full text-left"><thead><tr class="bg-gray-100"><th class="p-3">Roll No.</th><th class="p-3">Student Name</th><th class="p-3">Status</th></tr></thead><tbody id="student-list-tbody"></tbody></table></div><div id="submit-attendance-container" class="mt-6 text-right hidden"><button class="btn-primary" onclick="submitAndShowChart()">Submit Attendance</button></div></div><div id="faculty-chart-container" class="mt-6 card p-6 hidden"><h3 class="font-bold text-lg mb-4">Attendance Summary</h3><div class="relative h-80"><canvas id="facultyAttendanceChart"></canvas></div></div>`;
+}
+function getFacultyAttendanceHistoryContent() {
+    return `<h1 class="text-3xl font-bold text-gray-800 mb-6">View Attendance History</h1><div class="card p-6"><div class="flex flex-wrap items-end gap-4 mb-6 bg-gray-50 p-4 rounded-lg"><div><label class="block text-sm font-medium">Class</label><select id="history-class-select" onchange="loadStudentDropdown()" class="mt-1 form-select rounded-md w-full"><option value="">-- Select Class --</option>${['CSE1', 'CSE2', 'CSE3', 'CSE-AI'].map(c => `<option value="${c}">${c}</option>`).join('')}</select></div><div><label class="block text-sm font-medium">Student</label><select id="history-student-select" onchange="viewStudentHistory()" class="mt-1 form-select rounded-md w-full" disabled><option value="">-- Select Student --</option></select></div></div><div id="student-history-container" class="hidden"><h3 id="history-student-name" class="text-xl font-bold mb-4"></h3><div class="overflow-x-auto"><table class="w-full text-left"><thead><tr class="bg-gray-100"><th class="p-3">Date</th><th class="p-3">Subject</th><th class="p-3">Status</th></tr></thead><tbody id="history-table-body"></tbody></table></div></div></div>`;
+}
+function getFacultyAssignmentsContent() {
+    return `<h1 class="text-3xl font-bold text-gray-800 mb-6">Manage Assignments</h1><div class="flex justify-end mb-4"><button class="btn-primary" onclick="openCreateAssignmentModal()"><i class="fas fa-plus mr-2"></i>Create New</button></div><div class="card p-6"><div class="overflow-x-auto"><table class="w-full text-left"><thead><tr class="bg-gray-100"><th class="p-3">Class</th><th class="p-3">Subject</th><th class="p-3">Title</th><th class="p-3">Submissions</th><th class="p-3">Actions</th></tr></thead><tbody>${MOCK_DATA.faculty.assignments.map(a => `<tr class="border-b"><td class="p-3">${a.class}</td><td class="p-3">${a.subject}</td><td class="p-3 font-medium">${a.title}</td><td class="p-3">${a.graded}/${a.submissions} Graded</td><td class="p-3"><button class="text-sm text-blue-600 hover:underline">View Submissions</button></td></tr>`).join('')}</tbody></table></div></div>`;
+}
+function loadStudentList() {
+    const tbody = document.getElementById('student-list-tbody'), submitContainer = document.getElementById('submit-attendance-container');
+    if (!tbody || !submitContainer) return;
+    document.getElementById('faculty-chart-container').classList.add('hidden');
+    const studentList = ALL_STUDENTS[document.getElementById('att-class').value];
+    if (studentList && studentList.length > 0) {
+        tbody.innerHTML = studentList.map(s => `<tr class="border-b"><td class="p-3">${s.roll}</td><td class="p-3 font-medium">${s.name}</td><td class="p-3"><div class="flex gap-4"><label class="flex items-center gap-1.5 cursor-pointer"><input type="radio" name="status_${s.roll}" value="P" class="form-radio h-5 w-5 text-green-600" checked><span class="text-green-700">Present</span></label><label class="flex items-center gap-1.5 cursor-pointer"><input type="radio" name="status_${s.roll}" value="A" class="form-radio h-5 w-5 text-red-600"><span class="text-red-700">Absent</span></label></div></td></tr>`).join('');
+        submitContainer.classList.remove('hidden');
+    } else {
+        tbody.innerHTML = `<tr><td colspan="3" class="text-center p-4 text-gray-500">No students.</td></tr>`;
+        submitContainer.classList.add('hidden');
+    }
+}
+function loadStudentDropdown() {
+    const studentSelect = document.getElementById('history-student-select'), historyContainer = document.getElementById('student-history-container');
+    studentSelect.innerHTML = '<option value="">-- Select Student --</option>'; studentSelect.disabled = true; historyContainer.classList.add('hidden');
+    const classSelect = document.getElementById('history-class-select').value;
+    if (classSelect) {
+        const studentList = ALL_STUDENTS[classSelect];
+        if (studentList && studentList.length > 0) {
+            studentList.forEach(student => { const option = document.createElement('option'); option.value = student.roll; option.textContent = `${student.name} (${student.roll})`; studentSelect.appendChild(option); });
+            studentSelect.disabled = false;
+        }
+    }
+}
+function viewStudentHistory() {
+    const studentRoll = document.getElementById('history-student-select').value, historyContainer = document.getElementById('student-history-container');
+    if (!studentRoll) { historyContainer.classList.add('hidden'); return; }
+    const studentData = MOCK_DATA.student_records[studentRoll], studentInfo = Object.values(ALL_STUDENTS).flat().find(s => s.roll === studentRoll);
+    document.getElementById('history-student-name').textContent = `History for ${studentInfo.name}`;
+    const historyTableBody = document.getElementById('history-table-body');
+    if (studentData && studentData.attendance.length > 0) {
+        historyTableBody.innerHTML = studentData.attendance.map(log => `<tr class="border-b"><td class="p-3">${log.date}</td><td class="p-3">${log.subject}</td><td class="p-3"><span class="text-xs font-medium px-2.5 py-0.5 rounded-full ${log.status === 'Present' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}">${log.status}</span></td></tr>`).join('');
+    } else {
+        historyTableBody.innerHTML = `<tr><td colspan="3" class="p-4 text-center text-gray-500">No history found.</td></tr>`;
+    }
+    historyContainer.classList.remove('hidden');
+}
+function submitAndShowChart() {
+    const presentCount = document.querySelectorAll('input[type="radio"][value="P"]:checked').length, absentCount = document.querySelectorAll('input[type="radio"][value="A"]:checked').length;
+    const chartContainer = document.getElementById('faculty-chart-container'); chartContainer.classList.remove('hidden');
+    if (facultyAttendanceChart) facultyAttendanceChart.destroy();
+    facultyAttendanceChart = new Chart(document.getElementById('facultyAttendanceChart').getContext('2d'), { type: 'pie', data: { labels: [`Present (${presentCount})`, `Absent (${absentCount})`], datasets: [{ data: [presentCount, absentCount], backgroundColor: ['rgba(59, 130, 246, 0.8)', 'rgba(239, 68, 68, 0.7)'], borderWidth: 1 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top' } } } });
+    showModal('Success', 'Attendance has been recorded successfully.');
+}
+function openCreateAssignmentModal() {
+    document.getElementById('modal-body').innerHTML = `<h2 class="text-2xl font-bold mb-4">Create Assignment</h2><form onsubmit="event.preventDefault(); showModal('Success', 'Assignment created.'); closeModal();" class="space-y-4"><div><label class="block text-sm font-medium">Subject</label><select class="mt-1 form-select rounded-md w-full">${currentUser.subjects.map(s => `<option>${s}</option>`).join('')}</select></div><div><label class="block text-sm font-medium">Title</label><input type="text" class="mt-1 form-input rounded-md w-full" required></div><div><label class="block text-sm font-medium">Deadline</label><input type="date" class="mt-1 form-input rounded-md w-full" required></div><div class="text-right mt-6"><button type="submit" class="btn-primary">Create</button></div></form>`;
+    document.getElementById('modal').classList.remove('hidden');
+}
+function showModal(title, message) {
+    document.getElementById('modal-body').innerHTML = `<h2 class="text-2xl font-bold mb-4">${title}</h2><p class="text-gray-600 mb-6">${message}</p><div class="text-right"><button class="btn-primary" onclick="closeModal()">Close</button></div>`;
+    document.getElementById('modal').classList.remove('hidden');
+}
+function closeModal() { document.getElementById('modal').classList.add('hidden'); }
+function switchRole(role) {
+    document.getElementById('student-login-form').classList.toggle('hidden', role !== 'student');
+    document.getElementById('faculty-login-form').classList.toggle('hidden', role !== 'faculty');
+    document.getElementById('student-tab').classList.toggle('active', role === 'student');
+    document.getElementById('faculty-tab').classList.toggle('active', role === 'faculty');
+    document.getElementById('login-error').classList.add('hidden');
+}
+function findStudent(branch, rollNumber) {
+    const studentsInBranch = ALL_STUDENTS[branch] || [];
+    const foundStudent = studentsInBranch.find(s => s.roll === rollNumber);
+    if (!foundStudent) return null;
+    
+    const rollNum = parseInt(rollNumber);
+    let labGroup = '', section = '';
+    if (rollNum >= 25001390001 && rollNum <= 25001390045) { labGroup = 'A1'; section = 'A'; }
+    else if (rollNum >= 25001390046 && rollNum <= 25001390090) { labGroup = 'A2'; section = 'A'; }
+    else if (rollNum >= 25001390091 && rollNum <= 25001390135) { labGroup = 'A3'; section = 'A'; }
+    else if (rollNum >= 25001390136 && rollNum <= 25001390180) { labGroup = 'B1'; section = 'B'; }
+    else if (rollNum >= 25001390181 && rollNum <= 25001390245) { labGroup = 'B2'; section = 'B'; }
+    else if (rollNum >= 25001390246 && rollNum <= 25001390290) { labGroup = 'B3'; section = 'B'; }
+    if (!section || !labGroup) { section = (branch === 'CSE1' || branch === 'CSE2') ? 'A' : 'B'; labGroup = section + '1'; }
+    return { ...foundStudent, branch, section, labGroup };
+}
+function login(user, role) {
+    currentUser = user; currentUserRole = role;
+    document.getElementById('login-page').classList.add('hidden');
+    document.getElementById('app').classList.remove('hidden');
+    document.getElementById('app').classList.add('flex');
+    setupUIForRole(role);
+    renderPage('dashboard');
+}
+function logout() {
+    currentUser = null; currentUserRole = null;
+    document.getElementById('app').classList.add('hidden');
+    document.getElementById('app').classList.remove('flex');
+    document.getElementById('portal-section').classList.add('hidden');
+    document.getElementById('home-page').classList.remove('hidden');
+    document.getElementById('login-page').classList.remove('hidden');
+    document.getElementById('login-error').classList.add('hidden');
+    switchRole('student');
+    stopConfetti();
+}
+function setupUIForRole(role) {
+    document.getElementById('portal-title').textContent = ROLES_CONFIG[role].title;
+    document.getElementById('profile-pic-nav').src = `https://placehold.co/100x100/E2E8F0/4A5568?text=${currentUser.name.charAt(0)}`;
+    document.getElementById('profile-name-nav').textContent = currentUser.name;
+    const navLinksContainer = document.getElementById('nav-links');
+    navLinksContainer.innerHTML = ROLES_CONFIG[role].nav.map(link => `<a href="#" class="sidebar-link flex items-center space-x-3 p-3 rounded-md" data-page="${link.page}"><i class="fas ${link.icon} w-6"></i><span>${link.name}</span></a>`).join('');
+    navLinksContainer.querySelectorAll('.sidebar-link').forEach(link => { link.addEventListener('click', (e) => { e.preventDefault(); renderPage(e.currentTarget.dataset.page); }); });
+}
+function generateWeeklySchedule() {
+    const schedule = {};
+    const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    days.forEach(day => {
+        const theoryClasses = masterTimetable.theory[currentUser.section]?.[day] || [];
+        const labClass = masterTimetable.labs[currentUser.labGroup]?.[day];
+        let dayClasses = [...theoryClasses];
+        if(labClass) dayClasses.push({ ...labClass, type: 'Lab'});
+        dayClasses.sort((a, b) => parseInt(a.time.split('-')[0]) - parseInt(b.time.split('-')[0]));
+        schedule[day] = dayClasses;
+    });
+    return schedule;
+}
+function renderDaySelector() {
+    const daySelector = document.getElementById('day-selector');
+    if (!daySelector) return;
+    daySelector.innerHTML = '';
+    const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    days.forEach(day => {
+        const button = document.createElement('button');
+        button.textContent = day;
+        button.dataset.day = day;
+        button.className = 'day-selector-btn px-3 py-1 rounded-md text-sm font-medium text-gray-300 hover:bg-indigo-500/50';
+        button.addEventListener('click', () => renderDaySchedule(day));
+        daySelector.appendChild(button);
+    });
+}
+function getDateForDayString(dayString) {
+    const dayMap = { 'Sun': 0, 'Mon': 1, 'Tue': 2, 'Wed': 3, 'Thu': 4, 'Fri': 5, 'Sat': 6 };
+    const targetDay = dayMap[dayString];
+    const today = new Date();
+    const currentDay = today.getDay();
+    const date = new Date(today);
+    const diff = targetDay - currentDay;
+    date.setDate(today.getDate() + diff);
+    return date;
+}
+function renderDaySchedule(selectedDay) {
+    const contentDiv = document.getElementById('daily-schedule-content');
+    if (!contentDiv) return;
+    
+    const dayDate = getDateForDayString(selectedDay);
+    const dateString = dayDate.toISOString().split('T')[0];
+    const holiday = holidays2025.find(h => h.date === dateString);
+    
+    if (holiday) {
+        startConfetti();
+        contentDiv.innerHTML = `<div class="text-center p-8"><div class="text-5xl mb-4">🎉</div><h2 class="text-3xl font-bold text-yellow-300 mb-2">It's a Holiday!</h2><p class="text-xl font-semibold">${holiday.name}</p></div>`;
+    } else {
+        stopConfetti();
+        const weeklySchedule = generateWeeklySchedule();
+        const dayClasses = weeklySchedule[selectedDay] || [];
+        let html;
+        if (dayClasses.length > 0) {
+            html = `<table id="daily-table" class="w-full text-left border-collapse"><thead><tr class="bg-slate-800/50"><th class="p-3 text-sm font-semibold tracking-wide w-1/4">Time</th><th class="p-3 text-sm font-semibold tracking-wide">Subject</th><th class="p-3 text-sm font-semibold tracking-wide">Faculty</th><th class="p-3 text-sm font-semibold tracking-wide">Location</th></tr></thead><tbody>`;
+            dayClasses.forEach(cls => {
+                const [startTime, endTime] = cls.time.split('-');
+                const isLab = cls.type === 'Lab';
+                html += `<tr class="border-b border-slate-700 transition-all duration-300" data-start="${startTime}" data-end="${endTime}"><td class="p-3 font-medium">${startTime}:00 - ${endTime}:00</td><td class="p-3 font-bold ${isLab ? 'text-purple-300' : ''}">${cls.subject}</td><td class="p-3 text-slate-300">${cls.faculty || 'N/A'}</td><td class="p-3 text-slate-300">${cls.location || 'Lab'}</td></tr>`;
+            });
+            html += `</tbody></table>`;
+        } else {
+            html = `<div class="text-center p-8"><p class="text-slate-400">No classes scheduled for ${selectedDay}.</p></div>`;
+        }
+        contentDiv.innerHTML = html;
+        highlightCurrentClass(selectedDay);
+    }
+    setActiveDayButton(selectedDay);
+}
+function setActiveDayButton(selectedDay) {
+    document.querySelectorAll('.day-selector-btn').forEach(button => {
+        button.classList.toggle('active', button.dataset.day === selectedDay);
+    });
+}
+function highlightCurrentClass(selectedDay) {
+    const today = new Date().toLocaleDateString('en-US', { weekday: 'short' });
+    const rows = document.querySelectorAll('#daily-table tbody tr');
+    rows.forEach(row => row.classList.remove('bg-green-500/20', 'ring-2', 'ring-green-400'));
+    if (selectedDay !== today) return;
+    const currentHour = new Date().getHours();
+    rows.forEach(row => {
+        const startHour = parseInt(row.dataset.start);
+        const endHour = parseInt(row.dataset.end);
+        if (currentHour >= startHour && currentHour < endHour) {
+            row.classList.add('bg-green-500/20', 'ring-2', 'ring-green-400');
+        }
+    });
+}
+function renderFullWeekSchedule() {
+    const fullWeekDiv = document.getElementById('full-week-schedule');
+    if (!fullWeekDiv) return;
+    const weeklySchedule = generateWeeklySchedule();
+    const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    let html = `<table class="w-full text-left border-collapse"><thead><tr class="bg-slate-800/50"><th class="p-3 text-sm font-semibold tracking-wide">Day</th><th class="p-3 text-sm font-semibold tracking-wide">Schedule</th></tr></thead><tbody>`;
+    days.forEach(day => {
+        const dayClasses = weeklySchedule[day];
+        html += `<tr class="border-b border-slate-700"><td class="p-3 font-medium align-top">${day}</td><td class="p-3">`;
+        if (dayClasses.length > 0) {
+            dayClasses.forEach(cls => {
+                const [startTime, endTime] = cls.time.split('-');
+                const isLab = cls.type === 'Lab';
+                html += `<div class="mb-2 p-2 rounded-lg ${isLab ? 'bg-purple-900/50' : 'bg-blue-900/50'}"><p class="font-bold">${cls.subject}</p><p class="text-sm text-slate-300">${startTime}:00 - ${endTime}:00</p>${cls.faculty ? `<p class="text-xs text-slate-400">Faculty: ${cls.faculty}</p>` : ''}${cls.location ? `<p class="text-xs text-slate-400">Location: ${cls.location}</p>` : ''}</div>`;
+            });
+        } else { html += `<p class="text-slate-400">No classes scheduled.</p>`; }
+        html += `</td></tr>`;
+    });
+    html += `</tbody></table>`;
+    fullWeekDiv.innerHTML = html;
+}
+function renderHolidays() {
+    const holidayListBody = document.getElementById('holiday-list-body');
+    if (!holidayListBody) return;
+    holidayListBody.innerHTML = '';
+    holidays2025.forEach(h => {
+        const date = new Date(h.date + 'T00:00:00');
+        const displayDate = date.toLocaleDateString('en-IN', { day: '2-digit', month: 'long', year: 'numeric' });
+        holidayListBody.innerHTML += `<tr class="border-b border-slate-700"><td class="p-3 font-medium">${displayDate}</td><td class="p-3">${h.name}</td><td class="p-3 text-slate-300">${h.day}</td></tr>`;
+    });
+}
+// --- CONFEETI LOGIC ---
+const confettiCanvas = document.getElementById('confetti-canvas');
+const confettiCtx = confettiCanvas.getContext('2d');
+let confettiParticles = [];
+let confettiAnimationId = null;
+
+function startConfetti() {
+    if (confettiAnimationId) return; // Already running
+    confettiCanvas.classList.remove('hidden');
+    resizeCanvas();
+    if (confettiParticles.length === 0) {
+        for (let i = 0; i < 150; i++) {
+            confettiParticles.push(createParticle());
+        }
+    } else {
+        confettiParticles.forEach(p => resetParticle(p));
+    }
+    animateConfetti();
+}
+
+function stopConfetti() {
+    if (confettiAnimationId) {
+        cancelAnimationFrame(confettiAnimationId);
+        confettiAnimationId = null;
+    }
+    confettiCanvas.classList.add('hidden');
+}
+
+function resizeCanvas() {
+    confettiCanvas.width = window.innerWidth;
+    confettiCanvas.height = window.innerHeight;
+}
+
+function createParticle() {
+    return {
+        x: Math.random() * confettiCanvas.width,
+        y: Math.random() * -confettiCanvas.height,
+        w: 10,
+        h: Math.random() * 15 + 10,
+        color: ['#f44336', '#e91e63', '#9c27b0', '#673ab7', '#3f51b5', '#2196f3', '#03a9f4', '#00bcd4', '#009688', '#4caf50', '#8bc34a', '#cddc39', '#ffeb3b', '#ffc107', '#ff9800'][Math.floor(Math.random() * 15)],
+        speed: Math.random() * 2 + 2,
+        rotation: Math.random() * 360,
+        sway: Math.random() * 2 - 1
+    };
+}
+
+function resetParticle(particle) {
+    particle.x = Math.random() * confettiCanvas.width;
+    particle.y = -20;
+}
+
+function animateConfetti() {
+    confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+    confettiParticles.forEach(particle => {
+        particle.y += particle.speed;
+        particle.x += particle.sway;
+        particle.rotation += particle.speed / 5;
+        
+        confettiCtx.save();
+        confettiCtx.translate(particle.x + particle.w / 2, particle.y + particle.h / 2);
+        confettiCtx.rotate(particle.rotation * Math.PI / 180);
+        confettiCtx.fillStyle = particle.color;
+        confettiCtx.fillRect(-particle.w / 2, -particle.h / 2, particle.w, particle.h);
+        confettiCtx.restore();
+
+        if (particle.y > confettiCanvas.height) {
+            resetParticle(particle);
+        }
+    });
+    confettiAnimationId = requestAnimationFrame(animateConfetti);
+}
+window.addEventListener('resize', resizeCanvas);
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('login-btn-home').addEventListener('click', (e) => {
+        e.preventDefault();
+        document.getElementById('home-page').classList.add('hidden');
+        document.getElementById('portal-section').classList.remove('hidden');
+    });
+    document.getElementById('student-login-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const student = findStudent(document.getElementById('branch-select').value, document.getElementById('roll-number').value.trim());
+        if (student) login(student, 'student');
+        else { document.getElementById('login-error').textContent = 'Invalid Roll Number or Branch.'; document.getElementById('login-error').classList.remove('hidden'); }
+    });
+    document.getElementById('faculty-login-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const faculty = ALL_FACULTY.find(f => f.id === document.getElementById('faculty-id').value.trim());
+        if (faculty) login(faculty, 'faculty');
+        else { document.getElementById('login-error').textContent = 'Invalid Faculty ID.'; document.getElementById('login-error').classList.remove('hidden'); }
+    });
+    document.getElementById('profile-button').addEventListener('click', () => document.getElementById('profile-dropdown').classList.toggle('hidden'));
+    window.addEventListener('click', (e) => { if (document.getElementById('profile-button') && !document.getElementById('profile-button').contains(e.target)) document.getElementById('profile-dropdown').classList.add('hidden'); });
+    document.getElementById('mobile-menu-button').addEventListener('click', () => document.getElementById('sidebar').classList.toggle('-translate-x-full'));
+    switchRole('student');
+});
+</script>
 
 </body>
 </html>
