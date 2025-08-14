@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* General Body Style from Main Page */
+        /* General Body Style */
         body {
             background-color: #0a0a1a;
             color: #e0e0e0;
@@ -213,7 +213,7 @@
         }
     </style>
 </head>
-<body>
+<body class="overflow-x-hidden">
     <canvas id="confetti-canvas" class="hidden"></canvas>
 
     <!-- =================================================================== -->
@@ -225,9 +225,9 @@
             <div class="container mx-auto px-4">
                 <div class="flex justify-between items-center py-4">
                     <a href="#" class="flex items-center space-x-3">
-                        <img src="https://csjmu.ac.in/wp-content/uploads/2021/12/cropped-csjm-university-logo-big-180x180.png" alt="CSJMU Logo" class="h-14 transition-transform duration-300 hover:rotate-12">
+                        <img src="https://csjmu.ac.in/wp-content/uploads/2021/12/cropped-csjm-university-logo-big-180x180.png" alt="CSJMU Logo" class="h-12 md:h-14 transition-transform duration-300 hover:rotate-12">
                         <div>
-                            <h1 class="text-lg font-bold text-white neon-text-glow">CSJM University</h1>
+                            <h1 class="text-base md:text-lg font-bold text-white neon-text-glow">CSJM University</h1>
                             <p class="text-xs text-gray-400">Kanpur, Uttar Pradesh</p>
                         </div>
                     </a>
@@ -239,19 +239,28 @@
                         <a href="#" class="nav-link-hover font-medium">Research</a>
                         <a href="#" id="login-btn-home" class="neon-btn">Login</a>
                     </nav>
-                    <button class="md:hidden text-cyan-400">
+                    <button id="mobile-menu-btn-home" class="md:hidden text-cyan-400">
                         <i class="fas fa-bars fa-2x"></i>
                     </button>
                 </div>
             </div>
+             <!-- Mobile Menu -->
+            <div id="mobile-menu-home" class="hidden md:hidden bg-gray-900/80 backdrop-blur-md">
+                <a href="#" class="block py-3 px-4 text-white hover:bg-cyan-500/20">Home</a>
+                <a href="#" class="block py-3 px-4 text-white hover:bg-cyan-500/20">About</a>
+                <a href="#" class="block py-3 px-4 text-white hover:bg-cyan-500/20">Academics</a>
+                <a href="#" class="block py-3 px-4 text-white hover:bg-cyan-500/20">Admissions</a>
+                <a href="#" class="block py-3 px-4 text-white hover:bg-cyan-500/20">Research</a>
+                <a href="#" id="login-btn-home-mobile" class="block py-3 px-4 text-cyan-400 font-bold hover:bg-cyan-500/20">Login</a>
+            </div>
         </header>
 
         <!-- Hero Section -->
-        <section class="hero-section text-white py-24 md:py-32">
+        <section class="hero-section text-white py-20 md:py-32">
             <div class="container mx-auto text-center px-4">
                 <h2 class="text-4xl md:text-6xl font-bold mb-4 neon-text-glow animate-pulse">Shape Tomorrow's World</h2>
-                <p class="text-lg md:text-xl mb-10 max-w-3xl mx-auto text-gray-300">Join an A++ NAAC accredited institution where innovation meets excellence. Your journey to the future starts here.</p>
-                <a href="#" class="neon-btn text-lg">Explore Programs</a>
+                <p class="text-lg md:text-xl mb-10 max-w-3xl mx-auto text-gray-300">Join an A++ NAAC accredited institution where innovation meets excellence.</p>
+                <a href="#" class="neon-btn text-base md:text-lg">Explore Programs</a>
             </div>
         </section>
 
@@ -297,9 +306,9 @@
                     <div>
                         <h3 class="text-2xl font-bold mb-6 text-cyan-400 neon-text-glow">Our Leadership</h3>
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
-                            <div class="flip-card h-64"><div class="flip-card-inner"><div class="flip-card-front card p-4 flex flex-col justify-center items-center"><img src="https://csjmu.ac.in/wp-content/uploads/2021/11/governer.jpeg" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-cyan-400"><h4 class="font-bold text-white">Smt. Anandiben Patel</h4><p class="text-sm text-gray-400">Hon'ble Chancellor</p></div><div class="flip-card-back"><h4 class="font-bold text-lg">Smt. Anandiben Patel</h4><p class="mb-4 text-sm">Guiding our university.</p><a href="#" class="bg-black/70 text-white font-bold py-2 px-4 rounded-lg hover:bg-black transition text-sm">View Bio</a></div></div></div>
-                            <div class="flip-card h-64"><div class="flip-card-inner"><div class="flip-card-front card p-4 flex flex-col justify-center items-center"><img src="https://csjmu.ac.in/wp-content/uploads/2021/11/chief-minister.jpeg" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-cyan-400"><h4 class="font-bold text-white">Shri Yogi Adityanath</h4><p class="text-sm text-gray-400">Hon'ble Chief Minister</p></div><div class="flip-card-back"><h4 class="font-bold text-lg">Shri Yogi Adityanath</h4><p class="mb-4 text-sm">Supporting educational excellence.</p><a href="#" class="bg-black/70 text-white font-bold py-2 px-4 rounded-lg hover:bg-black transition text-sm">View Bio</a></div></div></div>
-                            <div class="flip-card h-64"><div class="flip-card-inner"><div class="flip-card-front card p-4 flex flex-col justify-center items-center"><img src="https://csjmu.ac.in/wp-content/uploads/2022/08/vc-sir-csjmu.jpg" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-cyan-400"><h4 class="font-bold text-white">Prof. Vinay Kumar Pathak</h4><p class="text-sm text-gray-400">Vice Chancellor</p></div><div class="flip-card-back"><h4 class="font-bold text-lg">Prof. Vinay Kumar Pathak</h4><p class="mb-4 text-sm">Leading with vision.</p><a href="#" class="bg-black/70 text-white font-bold py-2 px-4 rounded-lg hover:bg-black transition text-sm">View Bio</a></div></div></div>
+                            <div class="flip-card h-64"><div class="flip-card-inner"><div class="flip-card-front card p-4 flex flex-col justify-center items-center"><img src="https://csjmu.ac.in/wp-content/uploads/2021/11/governer.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/96x96/1a1a3a/FFFFFF?text=AP';" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-cyan-400"><h4 class="font-bold text-white">Smt. Anandiben Patel</h4><p class="text-sm text-gray-400">Hon'ble Chancellor</p></div><div class="flip-card-back"><h4 class="font-bold text-lg">Smt. Anandiben Patel</h4><p class="mb-4 text-sm">Guiding our university.</p><a href="#" class="bg-black/70 text-white font-bold py-2 px-4 rounded-lg hover:bg-black transition text-sm">View Bio</a></div></div></div>
+                            <div class="flip-card h-64"><div class="flip-card-inner"><div class="flip-card-front card p-4 flex flex-col justify-center items-center"><img src="https://csjmu.ac.in/wp-content/uploads/2021/11/chief-minister.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/96x96/1a1a3a/FFFFFF?text=YA';" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-cyan-400"><h4 class="font-bold text-white">Shri Yogi Adityanath</h4><p class="text-sm text-gray-400">Hon'ble Chief Minister</p></div><div class="flip-card-back"><h4 class="font-bold text-lg">Shri Yogi Adityanath</h4><p class="mb-4 text-sm">Supporting educational excellence.</p><a href="#" class="bg-black/70 text-white font-bold py-2 px-4 rounded-lg hover:bg-black transition text-sm">View Bio</a></div></div></div>
+                            <div class="flip-card h-64"><div class="flip-card-inner"><div class="flip-card-front card p-4 flex flex-col justify-center items-center"><img src="https://csjmu.ac.in/wp-content/uploads/2022/08/vc-sir-csjmu.jpg" onerror="this.onerror=null;this.src='https://placehold.co/96x96/1a1a3a/FFFFFF?text=VP';" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-cyan-400"><h4 class="font-bold text-white">Prof. Vinay Kumar Pathak</h4><p class="text-sm text-gray-400">Vice Chancellor</p></div><div class="flip-card-back"><h4 class="font-bold text-lg">Prof. Vinay Kumar Pathak</h4><p class="mb-4 text-sm">Leading with vision.</p><a href="#" class="bg-black/70 text-white font-bold py-2 px-4 rounded-lg hover:bg-black transition text-sm">View Bio</a></div></div></div>
                         </div>
                     </div>
                 </div>
@@ -317,27 +326,30 @@
     <!-- =================================================================== -->
     <div id="portal-section" class="hidden">
         <!-- Login Page -->
-        <div id="login-page" class="flex items-center justify-center min-h-screen bg-gray-200">
-            <div class="w-full max-w-md p-8 space-y-6 bg-white rounded-xl shadow-lg">
+        <div id="login-page" class="flex items-center justify-center min-h-screen bg-gray-200 px-4">
+            <div class="w-full max-w-md p-6 md:p-8 space-y-6 bg-white rounded-xl shadow-lg">
                 <div class="text-center">
                     <img src="https://csjmu.ac.in/wp-content/uploads/2021/12/cropped-csjm-university-logo-big-180x180.png" onerror="this.onerror=null;this.src='https://placehold.co/96x96/003366/FFFFFF?text=CSJMU';" alt="CSJMU Logo" class="w-24 h-24 mx-auto mb-4">
-                    <h1 class="text-3xl font-bold text-gray-800">CSJMU Campus Portal</h1>
+                    <h1 class="text-2xl md:text-3xl font-bold text-gray-800">CSJMU Campus Portal</h1>
                     <p class="mt-2 text-gray-600">Welcome! Please select your role to login.</p>
                 </div>
                 <div class="flex border-b">
-                    <button id="student-tab" class="tab-btn flex-1 p-3 border-b-2 border-transparent text-gray-500" onclick="switchRole('student')"><i class="fas fa-user-graduate mr-2"></i>Student</button>
-                    <button id="faculty-tab" class="tab-btn flex-1 p-3 border-b-2 border-transparent text-gray-500" onclick="switchRole('faculty')"><i class="fas fa-chalkboard-teacher mr-2"></i>Faculty</button>
+                    <button id="student-tab" class="tab-btn flex-1 p-3 border-b-2 border-transparent text-gray-500 text-sm md:text-base" onclick="switchRole('student')"><i class="fas fa-user-graduate mr-2"></i>Student</button>
+                    <button id="faculty-tab" class="tab-btn flex-1 p-3 border-b-2 border-transparent text-gray-500 text-sm md:text-base" onclick="switchRole('faculty')"><i class="fas fa-chalkboard-teacher mr-2"></i>Faculty</button>
                 </div>
                 <form id="student-login-form"><div class="space-y-4"><div><label for="branch-select" class="block text-sm font-medium text-gray-700 mb-1">Select Branch</label><select id="branch-select" name="branch" class="w-full bg-gray-50 border border-gray-300 text-gray-900 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"><option value="CSE1">CSE1</option><option value="CSE2">CSE2</option><option value="CSE3">CSE3</option><option value="CSE-AI">CSE-AI</option></select></div><div><label for="roll-number" class="block text-sm font-medium text-gray-700 mb-1">Enter Roll Number</label><input type="text" id="roll-number" name="roll-number" class="w-full bg-gray-50 border border-gray-300 text-gray-900 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g., 25001390001"></div></div><div class="mt-6"><button type="submit" class="w-full btn-primary flex items-center justify-center gap-2"><i class="fas fa-sign-in-alt"></i> Login as Student</button></div></form>
                 <form id="faculty-login-form" class="hidden"><div class="space-y-4"><div><label for="faculty-id" class="block text-sm font-medium text-gray-700 mb-1">Faculty ID</label><input type="text" id="faculty-id" class="w-full bg-gray-50 border border-gray-300 text-gray-900 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g., F-CS-01"></div></div><div class="mt-6"><button type="submit" class="w-full btn-primary flex items-center justify-center gap-2"><i class="fas fa-sign-in-alt"></i> Login as Faculty</button></div></form>
                 <p id="login-error" class="text-red-500 text-center mt-4 hidden"></p>
-                <p class="text-xs text-center text-gray-500 mt-6">© 2024 CSJMU, Kanpur. All rights reserved.</p>
+                <p class="text-xs text-center text-gray-500 mt-6">© 2025 CSJMU, Kanpur. All rights reserved.</p>
             </div>
         </div>
 
         <!-- Main App -->
-        <div id="app" class="hidden min-h-screen">
-            <div id="sidebar" class="csjmu-blue text-gray-200 w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out">
+        <div id="app" class="hidden min-h-screen relative">
+            <!-- Sidebar Overlay for Mobile -->
+            <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden md:hidden"></div>
+            <!-- Sidebar -->
+            <div id="sidebar" class="csjmu-blue text-gray-200 w-64 space-y-6 py-7 px-2 fixed inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-300 ease-in-out z-40">
                 <a href="#" class="text-white flex items-center space-x-3 px-4"><img src="https://csjmu.ac.in/wp-content/uploads/2021/12/cropped-csjm-university-logo-big-180x180.png" onerror="this.onerror=null;this.src='https://placehold.co/48x48/003366/FFFFFF?text=CSJMU';" alt="CSJMU Logo" class="w-12 h-12"><span id="portal-title" class="text-xl font-bold"></span></a>
                 <nav id="nav-links"></nav>
             </div>
@@ -345,10 +357,10 @@
                 <header class="bg-white shadow-md p-4 flex justify-between items-center">
                     <button id="mobile-menu-button" class="md:hidden text-gray-600"><i class="fas fa-bars text-2xl"></i></button>
                     <div class="relative hidden md:block"><span class="absolute inset-y-0 left-0 flex items-center pl-3"><i class="fas fa-search text-gray-400"></i></span><input class="form-input pl-10 rounded-full w-full" type="text" placeholder="Search..."></div>
-                    <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-2 md:space-x-4">
                         <a href="#" class="text-gray-600"><i class="fas fa-bell"></i></a>
                         <div class="relative">
-                            <button id="profile-button" class="flex items-center space-x-2"><img id="profile-pic-nav" class="w-10 h-10 rounded-full" src="" alt="Profile"><span id="profile-name-nav" class="font-semibold"></span><i class="fas fa-chevron-down text-sm"></i></button>
+                            <button id="profile-button" class="flex items-center space-x-2"><img id="profile-pic-nav" class="w-10 h-10 rounded-full" src="" alt="Profile"><span id="profile-name-nav" class="font-semibold hidden sm:inline"></span><i class="fas fa-chevron-down text-sm"></i></button>
                             <div id="profile-dropdown" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-xl z-20 hidden"><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a><a href="#" onclick="logout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a></div>
                         </div>
                     </div>
@@ -376,10 +388,9 @@
         <!-- General Modal Structure -->
         <div id="modal" class="hidden">
             <div class="modal-backdrop" onclick="closeModal()"></div>
-            <div class="modal-content bg-white p-8 rounded-lg shadow-xl w-11/12 md:w-1/2 lg:w-1/3 max-h-[90vh] overflow-y-auto"><div id="modal-body"></div></div>
+            <div class="modal-content bg-white p-6 md:p-8 rounded-lg shadow-xl w-11/12 md:w-1/2 lg:w-1/3 max-h-[90vh] overflow-y-auto"><div id="modal-body"></div></div>
         </div>
     </div>
-
 <script>
 // --- DATA STORE (Corrected Data) ---
 const ALL_STUDENTS = {
@@ -505,7 +516,7 @@ const MOCK_DATA = {
                 { date: '2025-08-11', subject: 'HSS-S101', status: 'Absent' },
                 { date: '2025-08-10', subject: 'PHY-S101', status: 'Absent' },
                 { date: '2025-08-09', subject: 'MTH-S101', status: 'Present' },
-                { date: '2025-08-08', subject: 'ISC-S101', status: 'Present' },
+                { date: '25001390008', subject: 'ISC-S101', status: 'Present' },
             ]
         }
     }
@@ -519,8 +530,15 @@ let currentUser = null, currentUserRole = null, attendanceChart = null, facultyA
 function renderPage(page) {
     const mainContent = document.getElementById('main-content');
     document.querySelectorAll('.sidebar-link').forEach(link => { link.classList.remove('active'); if (link.dataset.page === page) link.classList.add('active'); });
-    if (window.innerWidth < 768) document.getElementById('sidebar').classList.add('-translate-x-full');
     
+    // Close mobile sidebar on navigation
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
+    if (window.innerWidth < 768) {
+        sidebar.classList.add('-translate-x-full');
+        overlay.classList.add('hidden');
+    }
+
     // Reset background for all pages except schedule
     mainContent.classList.remove('dark-theme-bg');
     mainContent.style.backgroundColor = '#f0f4f8';
@@ -534,9 +552,8 @@ function renderPage(page) {
                 mainContent.classList.add('dark-theme-bg');
                 mainContent.style.backgroundColor = '#0f172a';
                 mainContent.style.color = '#e2e8f0';
-                
                 renderDaySelector();
-                renderFullWeekSchedule();
+                renderFullWeekSchedule(); // This is now mobile-friendly
                 renderHolidays();
                 const today = new Date().toLocaleDateString('en-US', { weekday: 'short' });
                 renderDaySchedule(today);
@@ -559,24 +576,25 @@ function renderPage(page) {
         }
     }
 }
+
 function getStudentDashboardContent() {
     const { name, branch, roll } = currentUser;
     const today = new Date().toLocaleDateString('en-US', { weekday: 'short' });
     const weeklySchedule = generateWeeklySchedule();
     const dayClasses = weeklySchedule[today] || [];
-    
+        
     let scheduleHtml;
     if (dayClasses.length > 0) {
         scheduleHtml = `<div class="overflow-x-auto"><table class="w-full text-left">
-            <thead><tr class="bg-gray-100"><th class="p-3 text-sm font-semibold">Time</th><th class="p-3 text-sm font-semibold">Subject</th><th class="p-3 text-sm font-semibold">Faculty</th><th class="p-3 text-sm font-semibold">Location</th></tr></thead>
+            <thead><tr class="bg-gray-100"><th class="p-3 text-sm font-semibold">Time</th><th class="p-3 text-sm font-semibold">Subject</th><th class="p-3 text-sm font-semibold hidden sm:table-cell">Faculty</th><th class="p-3 text-sm font-semibold hidden sm:table-cell">Location</th></tr></thead>
             <tbody>`;
         dayClasses.forEach(cls => {
             const [startTime, endTime] = cls.time.split('-');
             scheduleHtml += `<tr class="border-b border-gray-200">
-                <td class="p-3 text-sm">${startTime}:00 - ${endTime}:00</td>
+                <td class="p-3 text-sm whitespace-nowrap">${startTime}:00 - ${endTime}:00</td>
                 <td class="p-3 font-semibold">${cls.subject}</td>
-                <td class="p-3 text-sm">${cls.faculty || 'N/A'}</td>
-                <td class="p-3 text-sm">${cls.location || 'Lab'}</td>
+                <td class="p-3 text-sm hidden sm:table-cell">${cls.faculty || 'N/A'}</td>
+                <td class="p-3 text-sm hidden sm:table-cell">${cls.location || 'Lab'}</td>
             </tr>`;
         });
         scheduleHtml += `</tbody></table></div>`;
@@ -587,16 +605,16 @@ function getStudentDashboardContent() {
     const mainSection = `
         <div class="mt-6">
             <h2 class="text-xl font-bold text-gray-800 mb-4">Today's Schedule</h2>
-            <div class="card p-4">
+            <div class="card p-2 md:p-4">
                 ${scheduleHtml}
             </div>
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
-            <div class="card p-6">
+            <div class="card p-4 md:p-6">
                 <h3 class="font-bold text-lg mb-4">Subject-wise Attendance</h3>
-                <div class="relative h-80"><canvas id="studentAttendanceChart"></canvas></div>
+                <div class="relative h-64 md:h-80"><canvas id="studentAttendanceChart"></canvas></div>
             </div>
-            <div class="card p-6">
+            <div class="card p-4 md:p-6">
                 <h3 class="font-bold text-lg mb-4">Notices</h3>
                 <ul class="space-y-3 max-h-80 overflow-y-auto">
                     ${MOCK_DATA.notices.map(n => `<li class="p-3 bg-blue-50 rounded-lg"><p class="font-semibold">${n.title}</p><p class="text-xs text-gray-500">${n.date}</p></li>`).join('')}
@@ -605,78 +623,89 @@ function getStudentDashboardContent() {
         </div>
     `;
 
-    return `<h1 class="text-3xl font-bold text-gray-800 mb-6">Dashboard</h1>
-        <div class="card p-6 flex flex-col md:flex-row items-center gap-6"><img src="https://placehold.co/100x100/E2E8F0/4A5568?text=${name.charAt(0)}" alt="Profile" class="w-24 h-24 rounded-full border-4 border-blue-200"><div><h2 class="text-2xl font-bold text-gray-800">${name}</h2><p class="text-gray-600">Student</p><div class="text-sm text-gray-500 mt-2"><strong>Branch:</strong> ${branch} | <strong>Roll No:</strong> ${roll}</div></div></div>
+    return `<h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6">Dashboard</h1>
+        <div class="card p-4 md:p-6 flex flex-col sm:flex-row items-center gap-4 md:gap-6"><img src="https://placehold.co/100x100/E2E8F0/4A5568?text=${name.charAt(0)}" alt="Profile" class="w-20 h-20 md:w-24 md:h-24 rounded-full border-4 border-blue-200"><div><h2 class="text-xl md:text-2xl font-bold text-gray-800 text-center sm:text-left">${name}</h2><p class="text-gray-600 text-center sm:text-left">Student</p><div class="text-sm text-gray-500 mt-2 text-center sm:text-left"><strong>Branch:</strong> ${branch} | <strong>Roll No:</strong> ${roll}</div></div></div>
         ${mainSection}`;
 }
+
 function getStudentScheduleContent() {
-    return `<div id="schedule-page-container" class="w-full max-w-7xl">
-        <header class="flex flex-wrap justify-between items-center mb-6 px-4 gap-4">
+    return `<div id="schedule-page-container" class="w-full max-w-7xl mx-auto">
+        <header class="flex flex-wrap justify-between items-center mb-6 px-2 md:px-4 gap-4">
             <div>
-                <h1 id="welcome-message" class="text-2xl md:text-3xl font-bold">Welcome, ${currentUser.name}!</h1>
-                <p id="student-details" class="text-gray-400">Branch: ${currentUser.branch} | Roll No: ${currentUser.roll} | Group: ${currentUser.labGroup}</p>
+                <h1 id="welcome-message" class="text-xl md:text-3xl font-bold">Welcome, ${currentUser.name.split(' ')[0]}!</h1>
+                <p id="student-details" class="text-gray-400 text-xs md:text-base">Branch: ${currentUser.branch} | Roll No: ${currentUser.roll} | Group: ${currentUser.labGroup}</p>
             </div>
             <div class="flex items-center gap-2">
-                <button id="holidays-button" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md">Holiday List</button>
+                <button id="holidays-button" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md text-sm">Holiday List</button>
             </div>
         </header>
-        <main>
-            <div class="glass-effect p-6 mb-6">
+        <main class="px-2 md:px-0">
+            <div class="glass-effect p-4 md:p-6 mb-6">
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-4">
                     <h2 class="text-xl font-bold">Daily Schedule</h2>
                     <div id="day-selector" class="flex flex-wrap gap-1 bg-gray-800/60 p-1 rounded-lg"></div>
                 </div>
                 <div id="daily-schedule-content" class="overflow-x-auto"></div>
             </div>
-            <div class="glass-effect p-6">
+            <div class="glass-effect p-4 md:p-6">
                 <h2 class="text-xl font-bold mb-4">Full Week Schedule</h2>
                 <div id="full-week-schedule" class="overflow-x-auto"></div>
             </div>
         </main>
     </div>`;
 }
+
 function getStudentAssignmentsContent() {
     const getStatusChip = (status) => `<span class="${status === 'Pending' ? 'bg-yellow-100 text-yellow-800' : 'bg-blue-100 text-blue-800'} text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">${status}</span>`;
-    return `<h1 class="text-3xl font-bold text-gray-800 mb-6">Assignments</h1><div class="card p-6"><div class="overflow-x-auto"><table class="w-full text-left"><thead><tr class="bg-gray-100"><th class="p-3">Subject</th><th class="p-3">Title</th><th class="p-3">Deadline</th><th class="p-3">Status</th><th class="p-3">Marks</th><th class="p-3">Action</th></tr></thead><tbody>${MOCK_DATA.student.assignments.map(a => `<tr class="border-b border-gray-200"><td class="p-3">${a.subject}</td><td class="p-3 font-medium">${a.title}</td><td class="p-3">${a.deadline}</td><td class="p-3">${getStatusChip(a.status)}</td><td class="p-3">${a.marks || '--'}</td><td class="p-3"><button class="btn-primary text-sm py-1 px-3 ${a.status !== 'Pending' ? 'opacity-50' : ''}" ${a.status !== 'Pending' ? 'disabled' : ''}>${a.status === 'Pending' ? 'Submit' : 'View'}</button></td></tr>`).join('')}</tbody></table></div></div>`;
+    return `<h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6">Assignments</h1><div class="card p-2 md:p-6"><div class="overflow-x-auto"><table class="w-full text-left"><thead><tr class="bg-gray-100"><th class="p-3 text-sm">Subject</th><th class="p-3 text-sm">Title</th><th class="p-3 text-sm hidden md:table-cell">Deadline</th><th class="p-3 text-sm">Status</th><th class="p-3 text-sm">Action</th></tr></thead><tbody>${MOCK_DATA.student.assignments.map(a => `<tr class="border-b border-gray-200"><td class="p-3 text-sm">${a.subject}</td><td class="p-3 font-medium text-sm">${a.title}</td><td class="p-3 text-sm hidden md:table-cell">${a.deadline}</td><td class="p-3 text-sm">${getStatusChip(a.status)}</td><td class="p-3"><button class="btn-primary text-xs py-1 px-2 ${a.status !== 'Pending' ? 'opacity-50' : ''}" ${a.status !== 'Pending' ? 'disabled' : ''}>${a.status === 'Pending' ? 'Submit' : 'View'}</button></td></tr>`).join('')}</tbody></table></div></div>`;
 }
+
 function getStudentQuizzesContent() {
-    return `<h1 class="text-3xl font-bold text-gray-800 mb-6">Quizzes</h1><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">${MOCK_DATA.student.quizzes.map(q => `<div class="card p-6"><p class="text-sm text-gray-500">${q.subject}</p><h3 class="text-lg font-bold my-2">${q.title}</h3><div class="flex justify-between items-center mt-4"><div><p class="text-sm text-gray-500">Score</p><p class="text-xl font-bold csjmu-blue-text">${q.score}</p></div><button class="btn-primary">View Results</button></div></div>`).join('')}</div>`;
+    return `<h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6">Quizzes</h1><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">${MOCK_DATA.student.quizzes.map(q => `<div class="card p-6"><p class="text-sm text-gray-500">${q.subject}</p><h3 class="text-lg font-bold my-2">${q.title}</h3><div class="flex justify-between items-center mt-4"><div><p class="text-sm text-gray-500">Score</p><p class="text-xl font-bold csjmu-blue-text">${q.score}</p></div><button class="btn-primary text-sm">View Results</button></div></div>`).join('')}</div>`;
 }
+
 function getStudentAttendanceContent() {
     const { overall, subjects, dailyLog } = MOCK_DATA.student.attendance;
     const getStatusChip = (status) => `<span class="${status === 'Present' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'} text-xs font-medium px-2.5 py-0.5 rounded-full">${status}</span>`;
-    return `<h1 class="text-3xl font-bold text-gray-800 mb-6">Attendance</h1><div class="grid grid-cols-1 lg:grid-cols-3 gap-6"><div class="lg:col-span-1 card p-6 flex flex-col items-center justify-center"><p class="text-lg text-gray-600">Overall Attendance</p><div class="relative h-48 w-48 my-4"><canvas id="studentAttendanceChart"></canvas></div><p class="text-6xl font-bold ${overall < 75 ? 'text-red-500' : 'text-green-500'}">${overall}%</p></div><div class="lg:col-span-2 card p-6"><h3 class="font-bold text-lg mb-4">Subject-wise Breakdown</h3><div class="overflow-x-auto"><table class="w-full text-left"><thead><tr class="bg-gray-100"><th class="p-3">Subject</th><th class="p-3">Total</th><th class="p-3">Attended</th><th class="p-3">Percentage</th></tr></thead><tbody>${subjects.map(s => `<tr class="border-b"><td class="p-3 font-medium">${s.name}</td><td class="p-3">${s.total}</td><td class="p-3">${s.present}</td><td class="p-3 font-bold ${s.percentage < 75 ? 'text-red-500' : 'text-green-600'}">${s.percentage.toFixed(1)}%</td></tr>`).join('')}</tbody></table></div></div></div><div class="card p-6 mt-6"><h3 class="font-bold text-lg mb-4">Daily Attendance Log</h3><div class="overflow-x-auto max-h-96"><table class="w-full text-left"><thead class="sticky top-0 bg-gray-100"><tr><th class="p-3">Date</th><th class="p-3">Subject</th><th class="p-3">Status</th></tr></thead><tbody>${dailyLog.map(log => `<tr class="border-b"><td class="p-3">${log.date}</td><td class="p-3 font-medium">${log.subject}</td><td class="p-3">${getStatusChip(log.status)}</td></tr>`).join('')}</tbody></table></div></div>`;
+    return `<h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6">Attendance</h1><div class="grid grid-cols-1 lg:grid-cols-3 gap-6"><div class="lg:col-span-1 card p-6 flex flex-col items-center justify-center"><p class="text-lg text-gray-600">Overall Attendance</p><div class="relative h-40 w-40 md:h-48 md:w-48 my-4"><canvas id="studentAttendanceChart"></canvas></div><p class="text-5xl md:text-6xl font-bold ${overall < 75 ? 'text-red-500' : 'text-green-500'}">${overall}%</p></div><div class="lg:col-span-2 card p-2 md:p-6"><h3 class="font-bold text-lg mb-4 p-2 md:p-0">Subject-wise Breakdown</h3><div class="overflow-x-auto"><table class="w-full text-left"><thead><tr class="bg-gray-100"><th class="p-3 text-sm">Subject</th><th class="p-3 text-sm">Total</th><th class="p-3 text-sm">Attended</th><th class="p-3 text-sm">Percentage</th></tr></thead><tbody>${subjects.map(s => `<tr class="border-b"><td class="p-3 font-medium text-sm">${s.name}</td><td class="p-3 text-sm">${s.total}</td><td class="p-3 text-sm">${s.present}</td><td class="p-3 font-bold text-sm ${s.percentage < 75 ? 'text-red-500' : 'text-green-600'}">${s.percentage.toFixed(1)}%</td></tr>`).join('')}</tbody></table></div></div></div><div class="card p-2 md:p-6 mt-6"><h3 class="font-bold text-lg mb-4 p-2 md:p-0">Daily Attendance Log</h3><div class="overflow-x-auto max-h-96"><table class="w-full text-left"><thead class="sticky top-0 bg-gray-100"><tr><th class="p-3 text-sm">Date</th><th class="p-3 text-sm">Subject</th><th class="p-3 text-sm">Status</th></tr></thead><tbody>${dailyLog.map(log => `<tr class="border-b"><td class="p-3 text-sm">${log.date}</td><td class="p-3 font-medium text-sm">${log.subject}</td><td class="p-3 text-sm">${getStatusChip(log.status)}</td></tr>`).join('')}</tbody></table></div></div>`;
 }
+
 function renderStudentAttendanceChart() {
     const ctx = document.getElementById('studentAttendanceChart'); if (!ctx) return; if (attendanceChart) attendanceChart.destroy();
-    attendanceChart = new Chart(ctx, { type: 'doughnut', data: { labels: ['Attended', 'Missed'], datasets: [{ data: [MOCK_DATA.student.attendance.overall, 100 - MOCK_DATA.student.attendance.overall], backgroundColor: ['rgba(59, 130, 246, 0.8)', 'rgba(239, 68, 68, 0.7)'], borderWidth: 1 }] }, options: { responsive: true, maintainAspectRatio: false, cutout: '70%', plugins: { legend: { position: 'bottom' } } } });
+    attendanceChart = new Chart(ctx, { type: 'doughnut', data: { labels: ['Attended', 'Missed'], datasets: [{ data: [MOCK_DATA.student.attendance.overall, 100 - MOCK_DATA.student.attendance.overall], backgroundColor: ['#3B82F6', '#EF4444'], borderColor: '#f0f4f8', borderWidth: 4 }] }, options: { responsive: true, maintainAspectRatio: false, cutout: '70%', plugins: { legend: { display: false } } } });
 }
+
 function getFacultyDashboardContent() {
-    return `<h1 class="text-3xl font-bold text-gray-800 mb-6">Faculty Dashboard</h1><div class="card p-6 flex items-center gap-6"><img src="https://placehold.co/100x100/E2E8F0/4A5568?text=${currentUser.name.charAt(0)}" alt="Profile" class="w-24 h-24 rounded-full border-4 border-blue-200"><div><h2 class="text-2xl font-bold text-gray-800">${currentUser.name}</h2><p class="text-gray-600">Faculty, ${currentUser.department}</p></div></div><div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6"><div class="card p-6"><p class="text-gray-500">Courses Assigned</p><p class="text-3xl font-bold">${currentUser.subjects.length}</p></div><div class="card p-6"><p class="text-gray-500">Pending Submissions</p><p class="text-3xl font-bold">12</p></div><div class="card p-6"><p class="text-gray-500">Classes Today</p><p class="text-3xl font-bold">3</p></div></div><div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6"><div class="card p-6"><h3 class="font-bold text-lg mb-4">Quick Actions</h3><div class="space-y-3"><button onclick="renderPage('mark-attendance')" class="btn-primary w-full text-left p-3"><i class="fas fa-user-check w-6 mr-2"></i>Mark Attendance</button><button onclick="renderPage('manage-assignments')" class="btn-primary w-full text-left p-3"><i class="fas fa-edit w-6 mr-2"></i>Create Assignment</button></div></div></div>`;
+    return `<h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6">Faculty Dashboard</h1><div class="card p-6 flex flex-col sm:flex-row items-center gap-6"><img src="https://placehold.co/100x100/E2E8F0/4A5568?text=${currentUser.name.charAt(0)}" alt="Profile" class="w-24 h-24 rounded-full border-4 border-blue-200"><div><h2 class="text-2xl font-bold text-gray-800">${currentUser.name}</h2><p class="text-gray-600">Faculty, ${currentUser.department}</p></div></div><div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6"><div class="card p-6"><p class="text-gray-500">Courses Assigned</p><p class="text-3xl font-bold">${currentUser.subjects.length}</p></div><div class="card p-6"><p class="text-gray-500">Pending Submissions</p><p class="text-3xl font-bold">12</p></div><div class="card p-6"><p class="text-gray-500">Classes Today</p><p class="text-3xl font-bold">3</p></div></div><div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6"><div class="card p-6"><h3 class="font-bold text-lg mb-4">Quick Actions</h3><div class="space-y-3"><button onclick="renderPage('mark-attendance')" class="btn-primary w-full text-left p-3"><i class="fas fa-user-check w-6 mr-2"></i>Mark Attendance</button><button onclick="renderPage('manage-assignments')" class="btn-primary w-full text-left p-3"><i class="fas fa-edit w-6 mr-2"></i>Create Assignment</button></div></div></div>`;
 }
+
 function getFacultyAttendanceContent() {
     const today = new Date().toISOString().split('T')[0];
-    return `<h1 class="text-3xl font-bold text-gray-800 mb-6">Mark Attendance</h1><div class="card p-6"><div class="flex flex-wrap items-end gap-4 mb-6 bg-gray-50 p-4 rounded-lg"><div><label class="block text-sm font-medium">Date</label><input type="date" id="att-date" value="${today}" class="mt-1 form-input rounded-md w-full"></div><div><label class="block text-sm font-medium">Subject</label><select id="att-subject" onchange="loadStudentList()" class="mt-1 form-select rounded-md w-full">${currentUser.subjects.map(s => `<option>${s}</option>`).join('')}</select></div><div><label class="block text-sm font-medium">Class</label><select id="att-class" onchange="loadStudentList()" class="mt-1 form-select rounded-md w-full">${['CSE1', 'CSE2', 'CSE3', 'CSE-AI'].map(c => `<option value="${c}">${c}</option>`).join('')}</select></div></div><div class="overflow-x-auto"><table class="w-full text-left"><thead><tr class="bg-gray-100"><th class="p-3">Roll No.</th><th class="p-3">Student Name</th><th class="p-3">Status</th></tr></thead><tbody id="student-list-tbody"></tbody></table></div><div id="submit-attendance-container" class="mt-6 text-right hidden"><button class="btn-primary" onclick="submitAndShowChart()">Submit Attendance</button></div></div><div id="faculty-chart-container" class="mt-6 card p-6 hidden"><h3 class="font-bold text-lg mb-4">Attendance Summary</h3><div class="relative h-80"><canvas id="facultyAttendanceChart"></canvas></div></div>`;
+    return `<h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6">Mark Attendance</h1><div class="card p-4 md:p-6"><div class="flex flex-col sm:flex-row flex-wrap items-end gap-4 mb-6 bg-gray-50 p-4 rounded-lg"><div><label class="block text-sm font-medium">Date</label><input type="date" id="att-date" value="${today}" class="mt-1 form-input rounded-md w-full"></div><div><label class="block text-sm font-medium">Subject</label><select id="att-subject" onchange="loadStudentList()" class="mt-1 form-select rounded-md w-full">${currentUser.subjects.map(s => `<option>${s}</option>`).join('')}</select></div><div><label class="block text-sm font-medium">Class</label><select id="att-class" onchange="loadStudentList()" class="mt-1 form-select rounded-md w-full">${['CSE1', 'CSE2', 'CSE3', 'CSE-AI'].map(c => `<option value="${c}">${c}</option>`).join('')}</select></div></div><div class="overflow-x-auto"><table class="w-full text-left"><thead><tr class="bg-gray-100"><th class="p-3 text-sm">Roll No.</th><th class="p-3 text-sm">Student Name</th><th class="p-3 text-sm">Status</th></tr></thead><tbody id="student-list-tbody"></tbody></table></div><div id="submit-attendance-container" class="mt-6 text-right hidden"><button class="btn-primary" onclick="submitAndShowChart()">Submit Attendance</button></div></div><div id="faculty-chart-container" class="mt-6 card p-6 hidden"><h3 class="font-bold text-lg mb-4">Attendance Summary</h3><div class="relative h-80"><canvas id="facultyAttendanceChart"></canvas></div></div>`;
 }
+
 function getFacultyAttendanceHistoryContent() {
-    return `<h1 class="text-3xl font-bold text-gray-800 mb-6">View Attendance History</h1><div class="card p-6"><div class="flex flex-wrap items-end gap-4 mb-6 bg-gray-50 p-4 rounded-lg"><div><label class="block text-sm font-medium">Class</label><select id="history-class-select" onchange="loadStudentDropdown()" class="mt-1 form-select rounded-md w-full"><option value="">-- Select Class --</option>${['CSE1', 'CSE2', 'CSE3', 'CSE-AI'].map(c => `<option value="${c}">${c}</option>`).join('')}</select></div><div><label class="block text-sm font-medium">Student</label><select id="history-student-select" onchange="viewStudentHistory()" class="mt-1 form-select rounded-md w-full" disabled><option value="">-- Select Student --</option></select></div></div><div id="student-history-container" class="hidden"><h3 id="history-student-name" class="text-xl font-bold mb-4"></h3><div class="overflow-x-auto"><table class="w-full text-left"><thead><tr class="bg-gray-100"><th class="p-3">Date</th><th class="p-3">Subject</th><th class="p-3">Status</th></tr></thead><tbody id="history-table-body"></tbody></table></div></div></div>`;
+    return `<h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6">View Attendance History</h1><div class="card p-4 md:p-6"><div class="flex flex-col sm:flex-row flex-wrap items-end gap-4 mb-6 bg-gray-50 p-4 rounded-lg"><div><label class="block text-sm font-medium">Class</label><select id="history-class-select" onchange="loadStudentDropdown()" class="mt-1 form-select rounded-md w-full"><option value="">-- Select Class --</option>${['CSE1', 'CSE2', 'CSE3', 'CSE-AI'].map(c => `<option value="${c}">${c}</option>`).join('')}</select></div><div class="flex-grow"><label class="block text-sm font-medium">Student</label><select id="history-student-select" onchange="viewStudentHistory()" class="mt-1 form-select rounded-md w-full" disabled><option value="">-- Select Student --</option></select></div></div><div id="student-history-container" class="hidden mt-4"><h3 id="history-student-name" class="text-xl font-bold mb-4"></h3><div class="overflow-x-auto"><table class="w-full text-left"><thead><tr class="bg-gray-100"><th class="p-3 text-sm">Date</th><th class="p-3 text-sm">Subject</th><th class="p-3 text-sm">Status</th></tr></thead><tbody id="history-table-body"></tbody></table></div></div></div>`;
 }
+
 function getFacultyAssignmentsContent() {
-    return `<h1 class="text-3xl font-bold text-gray-800 mb-6">Manage Assignments</h1><div class="flex justify-end mb-4"><button class="btn-primary" onclick="openCreateAssignmentModal()"><i class="fas fa-plus mr-2"></i>Create New</button></div><div class="card p-6"><div class="overflow-x-auto"><table class="w-full text-left"><thead><tr class="bg-gray-100"><th class="p-3">Class</th><th class="p-3">Subject</th><th class="p-3">Title</th><th class="p-3">Submissions</th><th class="p-3">Actions</th></tr></thead><tbody>${MOCK_DATA.faculty.assignments.map(a => `<tr class="border-b"><td class="p-3">${a.class}</td><td class="p-3">${a.subject}</td><td class="p-3 font-medium">${a.title}</td><td class="p-3">${a.graded}/${a.submissions} Graded</td><td class="p-3"><button class="text-sm text-blue-600 hover:underline">View Submissions</button></td></tr>`).join('')}</tbody></table></div></div>`;
+    return `<h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6">Manage Assignments</h1><div class="flex justify-end mb-4"><button class="btn-primary" onclick="openCreateAssignmentModal()"><i class="fas fa-plus mr-2"></i>Create New</button></div><div class="card p-2 md:p-6"><div class="overflow-x-auto"><table class="w-full text-left"><thead><tr class="bg-gray-100"><th class="p-3 text-sm">Class</th><th class="p-3 text-sm">Subject</th><th class="p-3 text-sm">Title</th><th class="p-3 text-sm hidden md:table-cell">Submissions</th><th class="p-3 text-sm">Actions</th></tr></thead><tbody>${MOCK_DATA.faculty.assignments.map(a => `<tr class="border-b"><td class="p-3 text-sm">${a.class}</td><td class="p-3 text-sm">${a.subject}</td><td class="p-3 font-medium text-sm">${a.title}</td><td class="p-3 text-sm hidden md:table-cell">${a.graded}/${a.submissions} Graded</td><td class="p-3"><button class="text-sm text-blue-600 hover:underline">View</button></td></tr>`).join('')}</tbody></table></div></div>`;
 }
+
 function loadStudentList() {
     const tbody = document.getElementById('student-list-tbody'), submitContainer = document.getElementById('submit-attendance-container');
     if (!tbody || !submitContainer) return;
     document.getElementById('faculty-chart-container').classList.add('hidden');
     const studentList = ALL_STUDENTS[document.getElementById('att-class').value];
     if (studentList && studentList.length > 0) {
-        tbody.innerHTML = studentList.map(s => `<tr class="border-b"><td class="p-3">${s.roll}</td><td class="p-3 font-medium">${s.name}</td><td class="p-3"><div class="flex gap-4"><label class="flex items-center gap-1.5 cursor-pointer"><input type="radio" name="status_${s.roll}" value="P" class="form-radio h-5 w-5 text-green-600" checked><span class="text-green-700">Present</span></label><label class="flex items-center gap-1.5 cursor-pointer"><input type="radio" name="status_${s.roll}" value="A" class="form-radio h-5 w-5 text-red-600"><span class="text-red-700">Absent</span></label></div></td></tr>`).join('');
+        tbody.innerHTML = studentList.map(s => `<tr class="border-b"><td class="p-3 text-sm">${s.roll}</td><td class="p-3 font-medium text-sm">${s.name}</td><td class="p-3"><div class="flex flex-col sm:flex-row gap-2 sm:gap-4"><label class="flex items-center gap-1.5 cursor-pointer"><input type="radio" name="status_${s.roll}" value="P" class="form-radio h-5 w-5 text-green-600" checked><span class="text-green-700 text-sm">Present</span></label><label class="flex items-center gap-1.5 cursor-pointer"><input type="radio" name="status_${s.roll}" value="A" class="form-radio h-5 w-5 text-red-600"><span class="text-red-700 text-sm">Absent</span></label></div></td></tr>`).join('');
         submitContainer.classList.remove('hidden');
     } else {
-        tbody.innerHTML = `<tr><td colspan="3" class="text-center p-4 text-gray-500">No students.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="3" class="text-center p-4 text-gray-500">No students found.</td></tr>`;
         submitContainer.classList.add('hidden');
     }
 }
+
 function loadStudentDropdown() {
     const studentSelect = document.getElementById('history-student-select'), historyContainer = document.getElementById('student-history-container');
     studentSelect.innerHTML = '<option value="">-- Select Student --</option>'; studentSelect.disabled = true; historyContainer.classList.add('hidden');
@@ -689,6 +718,7 @@ function loadStudentDropdown() {
         }
     }
 }
+
 function viewStudentHistory() {
     const studentRoll = document.getElementById('history-student-select').value, historyContainer = document.getElementById('student-history-container');
     if (!studentRoll) { historyContainer.classList.add('hidden'); return; }
@@ -696,28 +726,33 @@ function viewStudentHistory() {
     document.getElementById('history-student-name').textContent = `History for ${studentInfo.name}`;
     const historyTableBody = document.getElementById('history-table-body');
     if (studentData && studentData.attendance.length > 0) {
-        historyTableBody.innerHTML = studentData.attendance.map(log => `<tr class="border-b"><td class="p-3">${log.date}</td><td class="p-3">${log.subject}</td><td class="p-3"><span class="text-xs font-medium px-2.5 py-0.5 rounded-full ${log.status === 'Present' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}">${log.status}</span></td></tr>`).join('');
+        historyTableBody.innerHTML = studentData.attendance.map(log => `<tr class="border-b"><td class="p-3 text-sm">${log.date}</td><td class="p-3 text-sm">${log.subject}</td><td class="p-3 text-sm"><span class="text-xs font-medium px-2.5 py-0.5 rounded-full ${log.status === 'Present' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}">${log.status}</span></td></tr>`).join('');
     } else {
         historyTableBody.innerHTML = `<tr><td colspan="3" class="p-4 text-center text-gray-500">No history found.</td></tr>`;
     }
     historyContainer.classList.remove('hidden');
 }
+
 function submitAndShowChart() {
     const presentCount = document.querySelectorAll('input[type="radio"][value="P"]:checked').length, absentCount = document.querySelectorAll('input[type="radio"][value="A"]:checked').length;
     const chartContainer = document.getElementById('faculty-chart-container'); chartContainer.classList.remove('hidden');
     if (facultyAttendanceChart) facultyAttendanceChart.destroy();
-    facultyAttendanceChart = new Chart(document.getElementById('facultyAttendanceChart').getContext('2d'), { type: 'pie', data: { labels: [`Present (${presentCount})`, `Absent (${absentCount})`], datasets: [{ data: [presentCount, absentCount], backgroundColor: ['rgba(59, 130, 246, 0.8)', 'rgba(239, 68, 68, 0.7)'], borderWidth: 1 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top' } } } });
+    facultyAttendanceChart = new Chart(document.getElementById('facultyAttendanceChart').getContext('2d'), { type: 'pie', data: { labels: [`Present (${presentCount})`, `Absent (${absentCount})`], datasets: [{ data: [presentCount, absentCount], backgroundColor: ['#3B82F6', '#EF4444'], borderWidth: 1 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top' } } } });
     showModal('Success', 'Attendance has been recorded successfully.');
 }
+
 function openCreateAssignmentModal() {
     document.getElementById('modal-body').innerHTML = `<h2 class="text-2xl font-bold mb-4">Create Assignment</h2><form onsubmit="event.preventDefault(); showModal('Success', 'Assignment created.'); closeModal();" class="space-y-4"><div><label class="block text-sm font-medium">Subject</label><select class="mt-1 form-select rounded-md w-full">${currentUser.subjects.map(s => `<option>${s}</option>`).join('')}</select></div><div><label class="block text-sm font-medium">Title</label><input type="text" class="mt-1 form-input rounded-md w-full" required></div><div><label class="block text-sm font-medium">Deadline</label><input type="date" class="mt-1 form-input rounded-md w-full" required></div><div class="text-right mt-6"><button type="submit" class="btn-primary">Create</button></div></form>`;
     document.getElementById('modal').classList.remove('hidden');
 }
+
 function showModal(title, message) {
     document.getElementById('modal-body').innerHTML = `<h2 class="text-2xl font-bold mb-4">${title}</h2><p class="text-gray-600 mb-6">${message}</p><div class="text-right"><button class="btn-primary" onclick="closeModal()">Close</button></div>`;
     document.getElementById('modal').classList.remove('hidden');
 }
+
 function closeModal() { document.getElementById('modal').classList.add('hidden'); }
+
 function switchRole(role) {
     document.getElementById('student-login-form').classList.toggle('hidden', role !== 'student');
     document.getElementById('faculty-login-form').classList.toggle('hidden', role !== 'faculty');
@@ -725,30 +760,41 @@ function switchRole(role) {
     document.getElementById('faculty-tab').classList.toggle('active', role === 'faculty');
     document.getElementById('login-error').classList.add('hidden');
 }
+
 function findStudent(branch, rollNumber) {
     const studentsInBranch = ALL_STUDENTS[branch] || [];
     const foundStudent = studentsInBranch.find(s => s.roll === rollNumber);
     if (!foundStudent) return null;
-    
-    const rollNum = parseInt(rollNumber);
+
+    const rollNum = parseInt(rollNumber.slice(-3)); // Use last 3 digits for grouping
     let labGroup = '', section = '';
-    if (rollNum >= 25001390001 && rollNum <= 25001390045) { labGroup = 'A1'; section = 'A'; }
-    else if (rollNum >= 25001390046 && rollNum <= 25001390090) { labGroup = 'A2'; section = 'A'; }
-    else if (rollNum >= 25001390091 && rollNum <= 25001390135) { labGroup = 'A3'; section = 'A'; }
-    else if (rollNum >= 25001390136 && rollNum <= 25001390180) { labGroup = 'B1'; section = 'B'; }
-    else if (rollNum >= 25001390181 && rollNum <= 25001390245) { labGroup = 'B2'; section = 'B'; }
-    else if (rollNum >= 25001390246 && rollNum <= 25001390290) { labGroup = 'B3'; section = 'B'; }
-    if (!section || !labGroup) { section = (branch === 'CSE1' || branch === 'CSE2') ? 'A' : 'B'; labGroup = section + '1'; }
+    
+    if (branch === 'CSE1' || branch === 'CSE2') {
+        section = 'A';
+        if (rollNum <= 45) labGroup = 'A1';
+        else if (rollNum <= 90) labGroup = 'A2';
+        else labGroup = 'A3';
+    } else { // CSE3 & CSE-AI
+        section = 'B';
+        if (rollNum <= 180) labGroup = 'B1';
+        else if (rollNum <= 245) labGroup = 'B2';
+        else labGroup = 'B3';
+    }
+
     return { ...foundStudent, branch, section, labGroup };
 }
+
 function login(user, role) {
     currentUser = user; currentUserRole = role;
+    document.getElementById('home-page').classList.add('hidden');
+    document.getElementById('portal-section').classList.remove('hidden');
     document.getElementById('login-page').classList.add('hidden');
     document.getElementById('app').classList.remove('hidden');
     document.getElementById('app').classList.add('flex');
     setupUIForRole(role);
     renderPage('dashboard');
 }
+
 function logout() {
     currentUser = null; currentUserRole = null;
     document.getElementById('app').classList.add('hidden');
@@ -760,17 +806,19 @@ function logout() {
     switchRole('student');
     stopConfetti();
 }
+
 function setupUIForRole(role) {
     document.getElementById('portal-title').textContent = ROLES_CONFIG[role].title;
     document.getElementById('profile-pic-nav').src = `https://placehold.co/100x100/E2E8F0/4A5568?text=${currentUser.name.charAt(0)}`;
-    document.getElementById('profile-name-nav').textContent = currentUser.name;
+    document.getElementById('profile-name-nav').textContent = currentUser.name.split(' ')[0];
     const navLinksContainer = document.getElementById('nav-links');
     navLinksContainer.innerHTML = ROLES_CONFIG[role].nav.map(link => `<a href="#" class="sidebar-link flex items-center space-x-3 p-3 rounded-md" data-page="${link.page}"><i class="fas ${link.icon} w-6"></i><span>${link.name}</span></a>`).join('');
     navLinksContainer.querySelectorAll('.sidebar-link').forEach(link => { link.addEventListener('click', (e) => { e.preventDefault(); renderPage(e.currentTarget.dataset.page); }); });
 }
+
 function generateWeeklySchedule() {
     const schedule = {};
-    const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
     days.forEach(day => {
         const theoryClasses = masterTimetable.theory[currentUser.section]?.[day] || [];
         const labClass = masterTimetable.labs[currentUser.labGroup]?.[day];
@@ -781,6 +829,7 @@ function generateWeeklySchedule() {
     });
     return schedule;
 }
+
 function renderDaySelector() {
     const daySelector = document.getElementById('day-selector');
     if (!daySelector) return;
@@ -795,6 +844,7 @@ function renderDaySelector() {
         daySelector.appendChild(button);
     });
 }
+
 function getDateForDayString(dayString) {
     const dayMap = { 'Sun': 0, 'Mon': 1, 'Tue': 2, 'Wed': 3, 'Thu': 4, 'Fri': 5, 'Sat': 6 };
     const targetDay = dayMap[dayString];
@@ -805,14 +855,13 @@ function getDateForDayString(dayString) {
     date.setDate(today.getDate() + diff);
     return date;
 }
+
 function renderDaySchedule(selectedDay) {
     const contentDiv = document.getElementById('daily-schedule-content');
     if (!contentDiv) return;
-    
     const dayDate = getDateForDayString(selectedDay);
     const dateString = dayDate.toISOString().split('T')[0];
     const holiday = holidays2025.find(h => h.date === dateString);
-    
     if (holiday) {
         startConfetti();
         contentDiv.innerHTML = `<div class="text-center p-8"><div class="text-5xl mb-4">🎉</div><h2 class="text-3xl font-bold text-yellow-300 mb-2">It's a Holiday!</h2><p class="text-xl font-semibold">${holiday.name}</p></div>`;
@@ -822,11 +871,11 @@ function renderDaySchedule(selectedDay) {
         const dayClasses = weeklySchedule[selectedDay] || [];
         let html;
         if (dayClasses.length > 0) {
-            html = `<table id="daily-table" class="w-full text-left border-collapse"><thead><tr class="bg-slate-800/50"><th class="p-3 text-sm font-semibold tracking-wide w-1/4">Time</th><th class="p-3 text-sm font-semibold tracking-wide">Subject</th><th class="p-3 text-sm font-semibold tracking-wide">Faculty</th><th class="p-3 text-sm font-semibold tracking-wide">Location</th></tr></thead><tbody>`;
+            html = `<table id="daily-table" class="w-full text-left border-collapse"><thead><tr class="bg-slate-800/50"><th class="p-3 text-sm font-semibold tracking-wide w-1/4">Time</th><th class="p-3 text-sm font-semibold tracking-wide">Subject</th><th class="p-3 text-sm font-semibold tracking-wide hidden sm:table-cell">Faculty</th><th class="p-3 text-sm font-semibold tracking-wide hidden sm:table-cell">Location</th></tr></thead><tbody>`;
             dayClasses.forEach(cls => {
                 const [startTime, endTime] = cls.time.split('-');
                 const isLab = cls.type === 'Lab';
-                html += `<tr class="border-b border-slate-700 transition-all duration-300" data-start="${startTime}" data-end="${endTime}"><td class="p-3 font-medium">${startTime}:00 - ${endTime}:00</td><td class="p-3 font-bold ${isLab ? 'text-purple-300' : ''}">${cls.subject}</td><td class="p-3 text-slate-300">${cls.faculty || 'N/A'}</td><td class="p-3 text-slate-300">${cls.location || 'Lab'}</td></tr>`;
+                html += `<tr class="border-b border-slate-700 transition-all duration-300" data-start="${startTime}" data-end="${endTime}"><td class="p-3 font-medium text-sm whitespace-nowrap">${startTime}:00 - ${endTime}:00</td><td class="p-3 font-bold text-sm ${isLab ? 'text-purple-300' : ''}">${cls.subject}</td><td class="p-3 text-slate-300 text-sm hidden sm:table-cell">${cls.faculty || 'N/A'}</td><td class="p-3 text-slate-300 text-sm hidden sm:table-cell">${cls.location || 'Lab'}</td></tr>`;
             });
             html += `</tbody></table>`;
         } else {
@@ -837,11 +886,13 @@ function renderDaySchedule(selectedDay) {
     }
     setActiveDayButton(selectedDay);
 }
+
 function setActiveDayButton(selectedDay) {
     document.querySelectorAll('.day-selector-btn').forEach(button => {
         button.classList.toggle('active', button.dataset.day === selectedDay);
     });
 }
+
 function highlightCurrentClass(selectedDay) {
     const today = new Date().toLocaleDateString('en-US', { weekday: 'short' });
     const rows = document.querySelectorAll('#daily-table tbody tr');
@@ -856,27 +907,39 @@ function highlightCurrentClass(selectedDay) {
         }
     });
 }
+
 function renderFullWeekSchedule() {
     const fullWeekDiv = document.getElementById('full-week-schedule');
     if (!fullWeekDiv) return;
     const weeklySchedule = generateWeeklySchedule();
     const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    let html = `<table class="w-full text-left border-collapse"><thead><tr class="bg-slate-800/50"><th class="p-3 text-sm font-semibold tracking-wide">Day</th><th class="p-3 text-sm font-semibold tracking-wide">Schedule</th></tr></thead><tbody>`;
+    let html = `<div class="space-y-4">`;
     days.forEach(day => {
         const dayClasses = weeklySchedule[day];
-        html += `<tr class="border-b border-slate-700"><td class="p-3 font-medium align-top">${day}</td><td class="p-3">`;
+        html += `<div class="border-b border-slate-700 pb-4">
+                    <h3 class="font-bold text-lg mb-2 text-indigo-300">${day}</h3>`;
         if (dayClasses.length > 0) {
+            html += `<div class="space-y-2">`;
             dayClasses.forEach(cls => {
                 const [startTime, endTime] = cls.time.split('-');
                 const isLab = cls.type === 'Lab';
-                html += `<div class="mb-2 p-2 rounded-lg ${isLab ? 'bg-purple-900/50' : 'bg-blue-900/50'}"><p class="font-bold">${cls.subject}</p><p class="text-sm text-slate-300">${startTime}:00 - ${endTime}:00</p>${cls.faculty ? `<p class="text-xs text-slate-400">Faculty: ${cls.faculty}</p>` : ''}${cls.location ? `<p class="text-xs text-slate-400">Location: ${cls.location}</p>` : ''}</div>`;
+                html += `<div class="p-2 rounded-lg ${isLab ? 'bg-purple-900/50' : 'bg-blue-900/50'}">
+                            <p class="font-bold text-sm">${cls.subject}</p>
+                            <p class="text-xs text-slate-300">${startTime}:00 - ${endTime}:00</p>
+                            ${cls.faculty ? `<p class="text-xs text-slate-400">Faculty: ${cls.faculty}</p>` : ''}
+                            ${cls.location ? `<p class="text-xs text-slate-400">Location: ${cls.location}</p>` : ''}
+                         </div>`;
             });
-        } else { html += `<p class="text-slate-400">No classes scheduled.</p>`; }
-        html += `</td></tr>`;
+            html += `</div>`;
+        } else {
+            html += `<p class="text-slate-400 text-sm">No classes scheduled.</p>`;
+        }
+        html += `</div>`;
     });
-    html += `</tbody></table>`;
+    html += `</div>`;
     fullWeekDiv.innerHTML = html;
 }
+
 function renderHolidays() {
     const holidayListBody = document.getElementById('holiday-list-body');
     if (!holidayListBody) return;
@@ -884,9 +947,10 @@ function renderHolidays() {
     holidays2025.forEach(h => {
         const date = new Date(h.date + 'T00:00:00');
         const displayDate = date.toLocaleDateString('en-IN', { day: '2-digit', month: 'long', year: 'numeric' });
-        holidayListBody.innerHTML += `<tr class="border-b border-slate-700"><td class="p-3 font-medium">${displayDate}</td><td class="p-3">${h.name}</td><td class="p-3 text-slate-300">${h.day}</td></tr>`;
+        holidayListBody.innerHTML += `<tr class="border-b border-slate-700"><td class="p-3 font-medium text-sm">${displayDate}</td><td class="p-3 text-sm">${h.name}</td><td class="p-3 text-slate-300 text-sm">${h.day}</td></tr>`;
     });
 }
+
 // --- CONFEETI LOGIC ---
 const confettiCanvas = document.getElementById('confetti-canvas');
 const confettiCtx = confettiCanvas.getContext('2d');
@@ -944,14 +1008,12 @@ function animateConfetti() {
         particle.y += particle.speed;
         particle.x += particle.sway;
         particle.rotation += particle.speed / 5;
-        
         confettiCtx.save();
         confettiCtx.translate(particle.x + particle.w / 2, particle.y + particle.h / 2);
         confettiCtx.rotate(particle.rotation * Math.PI / 180);
         confettiCtx.fillStyle = particle.color;
         confettiCtx.fillRect(-particle.w / 2, -particle.h / 2, particle.w, particle.h);
         confettiCtx.restore();
-
         if (particle.y > confettiCanvas.height) {
             resetParticle(particle);
         }
@@ -960,30 +1022,64 @@ function animateConfetti() {
 }
 window.addEventListener('resize', resizeCanvas);
 
+// --- EVENT LISTENERS ---
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('login-btn-home').addEventListener('click', (e) => {
+    const homeLoginBtn = document.getElementById('login-btn-home');
+    const homeLoginBtnMobile = document.getElementById('login-btn-home-mobile');
+    const homeMobileMenuBtn = document.getElementById('mobile-menu-btn-home');
+    const homeMobileMenu = document.getElementById('mobile-menu-home');
+    const portalMobileMenuBtn = document.getElementById('mobile-menu-button');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+    const showPortal = (e) => {
         e.preventDefault();
         document.getElementById('home-page').classList.add('hidden');
         document.getElementById('portal-section').classList.remove('hidden');
+    };
+
+    homeLoginBtn.addEventListener('click', showPortal);
+    homeLoginBtnMobile.addEventListener('click', showPortal);
+    
+    homeMobileMenuBtn.addEventListener('click', () => {
+        homeMobileMenu.classList.toggle('hidden');
     });
+
     document.getElementById('student-login-form').addEventListener('submit', (e) => {
         e.preventDefault();
         const student = findStudent(document.getElementById('branch-select').value, document.getElementById('roll-number').value.trim());
         if (student) login(student, 'student');
         else { document.getElementById('login-error').textContent = 'Invalid Roll Number or Branch.'; document.getElementById('login-error').classList.remove('hidden'); }
     });
+
     document.getElementById('faculty-login-form').addEventListener('submit', (e) => {
         e.preventDefault();
         const faculty = ALL_FACULTY.find(f => f.id === document.getElementById('faculty-id').value.trim());
         if (faculty) login(faculty, 'faculty');
         else { document.getElementById('login-error').textContent = 'Invalid Faculty ID.'; document.getElementById('login-error').classList.remove('hidden'); }
     });
+    
     document.getElementById('profile-button').addEventListener('click', () => document.getElementById('profile-dropdown').classList.toggle('hidden'));
-    window.addEventListener('click', (e) => { if (document.getElementById('profile-button') && !document.getElementById('profile-button').contains(e.target)) document.getElementById('profile-dropdown').classList.add('hidden'); });
-    document.getElementById('mobile-menu-button').addEventListener('click', () => document.getElementById('sidebar').classList.toggle('-translate-x-full'));
+    
+    window.addEventListener('click', (e) => { 
+        const profileButton = document.getElementById('profile-button');
+        if (profileButton && !profileButton.contains(e.target)) {
+            document.getElementById('profile-dropdown').classList.add('hidden');
+        }
+    });
+
+    portalMobileMenuBtn.addEventListener('click', () => {
+        sidebar.classList.remove('-translate-x-full');
+        sidebarOverlay.classList.remove('hidden');
+    });
+
+    sidebarOverlay.addEventListener('click', () => {
+        sidebar.classList.add('-translate-x-full');
+        sidebarOverlay.classList.add('hidden');
+    });
+
     switchRole('student');
 });
 </script>
-
 </body>
 </html>
